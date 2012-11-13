@@ -1,0 +1,9 @@
+query_phrase,source_domain,url,title,description,date
+"test","super.domain.com","http://super.domain.com/test","Test on super.domain.com","Description of the Test on super.domain.com","2012-11-12"
+"test","super.domain.com","http://super.domain.com/test2","Test Second on super.domain.com","Description of the Test 2 on super.domain.com","2012-11-12"
+"test","super.domain.com","http://super.domain.com/test3","Test Third on super.domain.com","Description of the Test 3 on super.domain.com","2012-11-12"
+"not match","super.domain.com","http://super.domain.com/not_match","Not Match on super.domain.com","Description of the Not Match on super.domain.com","2012-11-12"
+"another","super.domain.com","http://super.domain.com/another","Another on super.domain.com","Description of the Another on super.domain.com","2012-11-12"
+"another","super.domain.com","http://super.domain.com/another2","Another 2 on super.domain.com","Description of the Another 2 on super.domain.com","2012-11-12"
+"another","super.domain2.com","http://super.domain.com/another","Another on super.domain2.com","Description of the Another on super.domain2.com","2012-11-12"
+"another","super.domain2.com","http://super.domain.com/another2","Another 2 on super.domain2.com","Description of the Another 2 on super.domain2.com","2012-11-12"
