@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseHelper
+class DatabaseModel
 {
     protected $db;
     
@@ -8,8 +8,13 @@ class DatabaseHelper
 
     public function __construct($file)
     {
-        $this->db = fopen($file, "r");
+        $this->db = fopen($file, "a+");
         $this->header = fgetcsv($this->db);
+    }
+
+    public static function makeClause(array $clause)
+    {
+        return $clause;
     }
 
     protected function read()
@@ -33,6 +38,7 @@ class DatabaseHelper
     {
         $res = array();
         $number = 0;
+        $exist = FALSE;
         while (($row = $this->read()) && (!$limit || count($res) < $limit))
         {
             $match_number = 0;
@@ -41,6 +47,7 @@ class DatabaseHelper
                 if(isset($row[$label]) && $row[$label] == $value)
                 {
                     $match_number++;
+                    $exist = TRUE;
                 }
             }
             
@@ -55,6 +62,22 @@ class DatabaseHelper
         }
 
         $this->reset();
+        
+        if($exist && empty($res))
+        {
+            throw new Exception('Offset');
+        }
+
         return $res;
+    }
+
+    public function insert(array $data)
+    {
+        foreach ($data as $row)
+        {
+            fputcsv($this->db, $row);
+        }
+        
+        $this->reset();
     }
 }

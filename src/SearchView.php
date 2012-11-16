@@ -13,11 +13,21 @@ class SearchView
     {
         //echo "__________________________________________________\n";
         //echo "|". implode("\t||\t", array_keys($data[0])) ."|\n";
-        foreach($data as $row)
+        foreach($data as $label=>$row)
         {
-            echo "||". implode("\t||", $row) ."\t||\n";
+            //echo "||". implode("\t||", $row) ."\t||\n";
+            foreach($row as $label=>$value)
+            {
+                echo "{$label}:\t\t{$value}\n";
+            }
+            echo "\n";
         }
         echo "\n";
+    }
+
+    public static function error($message)
+    {
+        echo $message ."\n";
     }
 
 }
