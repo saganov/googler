@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
 
-
 $usage = "
 Syntax
      bootstrap [OPTION]...
@@ -21,14 +20,8 @@ $source = isset($options['s']) ? $options['s'] : NULL;
 $page   = isset($options['p']) ? $options['p'] : 0;
 
 
-require_once "SearchController.php";
-require_once "DatabaseModel.php";
-require_once "GooglerModel.php";
+require_once dirname(__DIR__)."/app/App.php";
+require_once dirname(__DIR__)."/src/ConsoleView.php";>
 
-$controller = new SearchController(
-    new DatabaseModel('DB.csv'),
-    new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
-
-$controller->indexAction($query, $source);
-
-$controller->listAction($page);
+$app = new App(new ConsoleView);
+$app->run($query, $source, $page);

@@ -1,6 +1,6 @@
 <?php
 
-require_once "phpQuery.php";
+require_once dirname(__DIR__)."/vendor/phpQuery/phpQuery.php";
 
 class GooglerModel
 {
@@ -30,7 +30,6 @@ class GooglerModel
         curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
         $html = curl_exec($resource);
         //$html = iconv('windows-1251', 'UTF-8', $html);
-        var_dump(curl_getinfo($resource, CURLINFO_CONTENT_TYPE));
         file_put_contents('page.html', $html);
         curl_close($resource); // close the connection 
         phpQuery::newDocument($html);

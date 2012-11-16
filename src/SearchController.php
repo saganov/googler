@@ -1,7 +1,5 @@
 <?php
 
-require_once "SearchView.php";
-
 class SearchController
 {
     protected $db;
@@ -9,13 +7,15 @@ class SearchController
     
     protected $query;
     protected $source;
+    protected $view;
 
     protected $itemsPerPage = 10;
 
-    public function __construct($db, $googler)
+    public function __construct($db, $googler, $view)
     {
         $this->db = $db;
         $this->googler = $googler;
+        $this->view = $view;
     }
 
     public function indexAction($query = NULL, $source = NULL, $itemsPerPage = 10)
@@ -52,12 +52,12 @@ class SearchController
                     $this->itemsPerPage);        // limit
             }
         
-            SearchView::header("Search by phrase: '{$this->query}' :: page #{$page}");
-            SearchView::output($res);
+            $this->view->header("Search by phrase: '{$this->query}' :: page #{$page}");
+            $this->view->output($res);
         }
         catch(Exception $e)
         {
-            SearchView::error("Error occurs: ". $e->getMessage());
+            $this->view->error("Error occurs: ". $e->getMessage());
         }
     }
 

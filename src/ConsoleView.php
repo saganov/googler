@@ -1,6 +1,6 @@
 <?php
 
-class SearchView
+class ConsoleView /*implement View*/
 {
     public static function header($header)
     {
