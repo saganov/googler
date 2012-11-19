@@ -20,8 +20,10 @@ $source = isset($options['s']) ? $options['s'] : NULL;
 $page   = isset($options['p']) ? $options['p'] : 0;
 
 
-require_once dirname(__DIR__)."/app/App.php";
-require_once dirname(__DIR__)."/src/ConsoleView.php";>
+require_once (dirname(__DIR__)."/app/App.php");
+require_once (dirname(__DIR__)."/src/View.php");
 
-$app = new App(new ConsoleView);
+View::setTemplateDir(dirname(__DIR__) ."/view/cli");
+
+$app = new App();
 $app->run($query, $source, $page);
