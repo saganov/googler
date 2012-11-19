@@ -8,19 +8,17 @@ class App
 {
     protected $controller;
     
-    public function __construct(/*View Interface*/$view)
+    public function __construct()
     {
         $this->controller = new SearchController(
             new DatabaseModel(dirname(__DIR__).'/data/DB.csv'),
-            new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')),
-            $view);
+            new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
     }
     
 
     public function run($query, $source, $page)
     {
-        $this->controller->indexAction($query, $source);
-        $this->controller->listAction($page);
+        $this->controller->listAction($query, $source, $page);
     }
 
 }

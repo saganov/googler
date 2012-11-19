@@ -5,36 +5,30 @@ class SearchController
     protected $db;
     protected $googler;
     
-    protected $query;
-    protected $source;
-    protected $view;
-
     protected $itemsPerPage = 10;
 
-    public function __construct($db, $googler, $view)
+    public function __construct($db, $googler)
     {
         $this->db = $db;
         $this->googler = $googler;
-        $this->view = $view;
     }
 
-    public function indexAction($query = NULL, $source = NULL, $itemsPerPage = 10)
+    public function indexAction($itemsPerPage = 10)
     {
         $this->itemsPerPage = $itemsPerPage;
-        $this->query = $query;
-        $this->source = $source;
     }
     
-    public function listAction($page = 0)
+    public function listAction($query = NULL, $source = NULL, $page = 0)
     {
-        $clause = array('query_phrase'=>$this->query);
-        if(!is_null($this->source))
+        $clause = array('query_phrase'=>$query);
+        if(!is_null($source))
         {
             $clause['source_domain'] = $source;
         }
         
         $clause = $this->db->makeClause($clause);
         
+        $view = new View('index.html.php');
         try
         {
             $res = $this->search(
@@ -52,13 +46,17 @@ class SearchController
                     $this->itemsPerPage);        // limit
             }
         
-            $this->view->header("Search by phrase: '{$this->query}' :: page #{$page}");
-            $this->view->output($res);
+            $content = new View('content.html.php');
+            $content->set(array('query'=>$query, 'page'=>$page+1, 'items'=>$res));
         }
         catch(Exception $e)
         {
-            $this->view->error("Error occurs: ". $e->getMessage());
+            $content = new View('error.html.php');
+            $content->set(array('query'=>$query, 'page'=>$page+1, 'message'=>'Error occurs: '.$e->getMessage()));
         }
+
+        $view->set(array('content'=>$content->parse()));
+        $view->output();
     }
 
     protected function search($clause, $from, $limit)
