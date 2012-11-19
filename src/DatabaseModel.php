@@ -10,7 +10,7 @@ class DatabaseModel
     public function __construct($file)
     {
         $this->dbName = $file;
-        $db = fopen($file, "a+");
+        $db = fopen($file, "r");
         $this->header = fgetcsv($db);
         fclose($db);
     }
