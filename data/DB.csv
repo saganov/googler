@@ -1,252 +1,882 @@
-query_phrase,source_domain,url,title,description,date
-"test","super.domain.com","http://super.domain.com/test","Test on super.domain.com","Description of the Test on super.domain.com","2012-11-12"
-"test","super.domain.com","http://super.domain.com/test2","Test Second on super.domain.com","Description of the Test 2 on super.domain.com","2012-11-12"
-"test","super.domain.com","http://super.domain.com/test3","Test Third on super.domain.com","Description of the Test 3 on super.domain.com","2012-11-12"
-"not match","super.domain.com","http://super.domain.com/not_match","Not Match on super.domain.com","Description of the Not Match on super.domain.com","2012-11-12"
-"another","super.domain.com","http://super.domain.com/another","Another on super.domain.com","Description of the Another on super.domain.com","2012-11-12"
-"another","super.domain.com","http://super.domain.com/another2","Another 2 on super.domain.com","Description of the Another 2 on super.domain.com","2012-11-12"
-"another","super.domain2.com","http://super.domain.com/another","Another on super.domain2.com","Description of the Another on super.domain2.com","2012-11-12"
-"another","super.domain2.com","http://super.domain.com/another2","Another 2 on super.domain2.com","Description of the Another 2 on super.domain2.com","2012-11-12"
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/CHUK,"
-<em>CHUK</em> - Wikipedia, the free encyclopedia","Inhibitor of nuclear factor kappa-B kinase subunit alpha (IKK-α) also known as IKK1 or conserved helix-loop-helix ubiquitous kinase (<em>CHUK</em>) is a protein kinase <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuk_(instrument),"
-<em>Chuk</em> (instrument) - Wikipedia, the free encyclopedia","The <em>chuk</em> (hangul: 축; hanja: 柷) is a traditional Korean musical instrument used in Confucian (Munmyo) and Royal Ancestral Shrine (Jongmyo) ceremonies to <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuk_Iwuji,"
-<em>Chuk</em> Iwuji - Wikipedia, the free encyclopedia","Chukwudi Iwuji (born 1975, Nigeria), usually shortened to <em>Chuk</em> Iwuji or Chuck Iwuji, is a Nigerian-born actor, active in the United Kingdom.<br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Wong_Chuk_Hang,"Wong <em>Chuk</em> Hang - Wikipedia, the free encyclopedia","Wong <em>Chuk</em> Hang is an industrial and residential town to the east of Aberdeen and to the north of Nam Long Shan and to the west of Shouson Hill, on Hong <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuk_Yuen,"
-<em>Chuk</em> Yuen - Wikipedia, the free encyclopedia","
-<em>Chuk</em> Yuen (Chinese: 竹園) or <em>Chuk</em> Un was a village and an area in New Kowloon of Hong Kong. The  area is approximately present-day Wong Tai Sin.<br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/U_Tong-chuk,"U Tong-<em>chuk</em> - Wikipedia,  the free encyclopedia","U Tong-<em>chuk</em> (born August 8, 1942) is a North Korean official. He is politburo member of Central Committee of the  Workers' Party of Korea. In addition, he was <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Cheung_Chuk_Shan_College,"Cheung <em>Chuk</em> Shan College - Wikipedia, the free encyclopedia","Cheung <em>Chuk</em> Shan College (Traditional Chinese: 張祝珊英文中學) is a Hong Kong aided co-educational secondary school founded in 1969 by a group of <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Sam_Chuk_District,"Sam <em>Chuk</em> District - Wikipedia, the free encyclopedia","Sam <em>Chuk</em> is a district (Amphoe) in the northern part of Suphanburi Province, central Thailand. Contents. 1 History; 2 Geography; 3 Administration; 4 References <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuk_Yuen_Estate,"
-<em>Chuk</em> Yuen Estate - Wikipedia, the free encyclopedia","
-<em>Chuk</em> Yuen Estate (Chinese: 竹園邨) is a public housing estate in Kowloon, Hong Kong, located north of Wong Tai Sin and underneath Lion Rock. Its site was <b>...</b><br>
-",2012-11-16
-chuk,en.wikipedia.org,http://en.wikipedia.org/wiki/Wong_Chuk_Hang_Road,"Wong <em>Chuk</em> Hang Road - Wikipedia, the free encyclopedia","Wong <em>Chuk</em> Hang Road (Chinese: 黃竹坑道) is a major thoroughfare in southern Hong Kong Special Administrative Region, China. It is part of Hong Kong Route <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+query_phrase,source_domain,url,title,description,date,show,click
+test,super.domain.com,http://super.domain.com/test,"Test on super.domain.com","Description of the Test on super.domain.com",2012-11-12,,
+test,super.domain.com,http://super.domain.com/test2,"Test Second on super.domain.com","Description of the Test 2 on super.domain.com",2012-11-12,,
+test,super.domain.com,http://super.domain.com/test3,"Test Third on super.domain.com","Description of the Test 3 on super.domain.com",2012-11-12,,
+"not match",super.domain.com,http://super.domain.com/not_match,"Not Match on super.domain.com","Description of the Not Match on super.domain.com",2012-11-12,,
+another,super.domain.com,http://super.domain.com/another,"Another on super.domain.com","Description of the Another on super.domain.com",2012-11-12,,
+another,super.domain.com,http://super.domain.com/another2,"Another 2 on super.domain.com","Description of the Another 2 on super.domain.com",2012-11-12,,
+another,super.domain2.com,http://super.domain.com/another,"Another on super.domain2.com","Description of the Another on super.domain2.com",2012-11-12,,
+another,super.domain2.com,http://super.domain.com/another2,"Another 2 on super.domain2.com","Description of the Another 2 on super.domain2.com",2012-11-12,,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,16,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
 <em>Chuck</em> — Википедия","
 <em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
 <em>Chuck</em> Taylor All-Stars — Википедия","
 <em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
-",2012-11-16
-chuk,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
-<em>Chuck</em> Yeager's Air Combat — Википедия","
-<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
-<em>Chuck</em> Berry on Stage — Википедия","
-<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+",2012-11-19,18,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
 <em>Chuck</em> Berry Is on Top — Википедия","
 <em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,18,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
 <em>Chuck</em> Berry's Golden Hits — Википедия","
 <em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
-",2012-11-16
-chuk,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+",2012-11-19,18,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
 <em>Chuck</em> Testa — Lurkmore","
 <span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
-<span class=""f"">5 мар 2012 – </span>http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал мем в англоинтернетах, не врубался, спасибо. Источник <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
 <span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
 <span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
 <b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
 <span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
-<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
 <span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
-<span class=""f"">3 дн. назад – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
-",2012-11-16
-chuk,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,23,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
 <span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/,"Wikipedia, the free encyclopedia","Free volunteer-edited encyclopedia with over 2.1 million articles.<br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Alan_Dawson,"Alan Dawson - Wikipedia, the free encyclopedia","Alan Dawson (July 14, 1929 — February 23, 1996) was a respected jazz drummer and widely influential percussion teacher based in Boston.<br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Mensans,"List of Mensans - Wikipedia, the free encyclopedia","The list of Mensans contains notable people who are, or who have been, members of Mensa International, the high IQ society.<br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Andrei_Platonov,"Andrei Platonov - Wikipedia, the free encyclopedia","Andrei Platonov was the pen name of Andrei Platonovich Klimentov (Russian: Андре́й Плато́нович Климе́нтов), a Soviet author whose works anticipate <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Santino_Marella,"Santino Marella - Wikipedia, the free encyclopedia","Anthony Carelli (born March 14, 1979), best known by his ring name Santino Marella, is an Italian-Canadian professional wrestler,, currently  working for WWE.<br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Kathy_Ireland,"Kathy Ireland - Wikipedia, the free encyclopedia","Kathleen Marie ""Kathy"" Ireland (born March 20, 1963) is an American model, actress, entrepreneur and designer. She rose to fame in the 1980s and 1990s as a <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Rupert_Graves,"Rupert Graves - Wikipedia, the free encyclopedia","Rupert Graves (born 30 June 1963) is an English film, television and theatre actor. He is known for his early roles in A Room with a View and Maurice as well as <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Gerrit_Hendrik_Kersten,"Gerrit Hendrik Kersten - Wikipedia, the free encyclopedia","Gerrit Hendrik Kersten (August 6, 1882, Deventer – September 6, 1948, Waarde) was a Dutch Christian minister and politician. In 1907, Kersten founded the <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Battle_of_Anadan,"Battle of Anadan - Wikipedia, the free encyclopedia","The Battle of Anadan was a ten-hour-long armed confrontation between the rebels of the Free Syrian Army and soldiers of the Syrian Army that occurred when <b>...</b><br>
-",2012-11-16
-,en.wikipedia.org,http://en.wikipedia.org/wiki/Primo_Carnera,"Primo Carnera - Wikipedia, the free encyclopedia","Primo Carnera was an Italian boxer, nicknamed the Ambling Alp, who became the world heavyweight champion. His career was controversial. Some believe <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/,"Википедия — свободная энциклопедия","Многоязычный проект по созданию полноценной и точной энциклопедии со свободно распространяемым содержимым. Любой пользователь может <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A7%D0%B5%D1%80%D0%B5%D0%BF%D0%BE%D0%B2%D0%B5%D1%86%D0%BA%D0%B8%D0%B9_%D1%82%D1%80%D0%B0%D0%BC%D0%B2%D0%B0%D0%B9,"Череповецкий трамвай — Википедия","Череповецкий трамвай — система электрического трамвая в городе Череповце, состоит из 3 маршрутов. Открыта 19 октября 1956 года.<br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A0%D1%8E%D1%85%D0%B8%D0%BD%D0%B0_%D1%83%D0%BB%D0%B8%D1%86%D0%B0,"Рюхина улица — Википедия","Перейти к: навигация, поиск. Координаты: 59°58′17″ с. ш. 30°15′32″ в. д.﻿ / ﻿59.971389° с. ш. 30.258889° в. д.59.971389, 30.258889. Рюхина улица <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%9C%D0%BE%D0%BB%D0%BE%D0%B4%D1%91%D0%B6%D0%BD%D0%B0%D1%8F_%D1%81%D0%B1%D0%BE%D1%80%D0%BD%D0%B0%D1%8F_%D0%90%D1%80%D0%BC%D0%B5%D0%BD%D0%B8%D0%B8_%D0%BF%D0%BE_%D1%84%D1%83%D1%82%D0%B1%D0%BE%D0%BB%D1%83,"Молодёжная сборная Армении по футболу — Википедия","Молодё́жная сбо́рная Арме́нии по футбо́лу также известная, как Сбо́рная Арме́нии по футбо́лу до 21 го́да (арм. Հայաստանի ֆուտբոլի Մ-21 <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%93%D0%B0%D1%80%D0%BF%D0%B8%D0%B8,"Гарпии — Википедия","Га́рпии (др.-греч. Ἅρπυιαι) — в древнегреческой мифологии — дочери морского божества Тавманта и  океаниды Электры (либо Озомены), либо дочери <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%BD%D0%BE_%D1%81%D0%B5%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D0%BE,"Совершенно секретно — Википедия","«Совершенно секретно» — советское и российское ежемесячное международное общественно-политическое издание, выходящее раз в месяц.<br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA,"Белорусский язык — Википедия","Белору́сский язы́к (белор. беларуская мова, biełaruskaja mova) — один из трёх восточнославянских языков, национальный язык белорусов, <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%9E%D1%80%D0%B4%D0%B5%D0%BD_%D0%94%D0%B2%D0%BE%D0%B9%D0%BD%D0%BE%D0%B3%D0%BE_%D0%94%D1%80%D0%B0%D0%BA%D0%BE%D0%BD%D0%B0,"Орден Двойного Дракона — Википедия","Орден Двойного Дракона (кит. трад. 雙龍寶星, упр. 双龙宝星, пиньинь: Shuānglóng Bǎoxīng, палл.: Шуанлун Баосин) или, более точно, Драгоценная <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%90%D0%B4%D1%8B%D0%B3%D0%B8,"Адыги — Википедия","Ады́ги (или черкесы) — общее название единого народа в России и за рубежом, разделенного на кабардинцев, черкесов,  убыхов, адыгейцев и <b>...</b><br>
-",2012-11-16
-,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D1%8F,"Троя — Википедия","Тро́я (греч. Τροία, Τροίη или Wilios, хетт. Wilusa (URUWi-lu-ša ); тур. Troya, Truva), иначе называемая Илио́н (греч. Ἴλιον, хетт. Wilusa), Дардания и <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/,Lurkmore,"
-<span class=""f"">11 июл 2012 – </span>Энциклопедия современной культуры, фольклора и субкультур с точки зрения интеллектуального меньшинства.<br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%9D%D0%B0%D1%81%D1%82%D0%BE%D1%8F%D1%89%D0%B8%D0%B9_%D0%B8%D0%BD%D0%B4%D0%B5%D0%B5%D1%86,"Настоящий индеец — Lurkmore","
-<span class=""f"">4 дн. назад – </span>В отличие от некоторых покорённых белой расой народов (тех же негров, например, которые оказались чуть ли не единственным <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%91%D0%B5%D1%80%D0%BB%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D1%81%D1%82%D0%B5%D0%BD%D0%B0,"Берлинская стена — Lurkmore","
-<span class=""f"">7 ноя 2012 – </span>Schreibikus bw.jpg, Achtung! Русскоязычному читателю на заметку. Ввиду засилья в статье die deutsche Sprache, сознательные и <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%9F%D0%BB%D1%8E%D1%81_1,"Плюс 1 — Lurkmore","
-<span class=""f"">30 июл 2012 – </span>+1 — один из способов (и самый ленивый) сказать «подписываюсь под всем вышесказанным». Иногда встречаются выражения вида +2 <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%9F%D1%83%D1%82%D0%B8%D0%BD_%D0%B2%D0%B7%D1%80%D1%8B%D0%B2%D0%B0%D0%B5%D1%82_%D0%B4%D0%BE%D0%BC%D0%B0,"Путин взрывает дома — Lurkmore","
-<span class=""f"">6 дн. назад – </span>Путин взрывает дома — сайт для проведения коллективных распределенных DDoS-атак, один из видов JS-LOIC. Название отсылает <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%A2%D0%B0%D1%80%D0%B0%D1%88%D0%BA%D0%B5%D0%B2%D0%B8%D1%86%D0%B0,"Тарашкевица — Lurkmore","
-<span class=""f"">2 ноя 2012 – </span>Мiж iншым, iснуе канфлiкт памiж прыхiльнiкамi «тарашкевiцы» i «наркомаўкi»<wbr>. Як вы ставiцеся да гэтай праблемы? — Нiякай праблемы <b>...</b><br></wbr>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%9D%D0%B8%D1%89%D0%B5%D0%B1%D1%80%D0%BE%D0%B4,"Нищеброд — Lurkmore","
-<span class=""f"">8 ноя 2012 – </span>Butthurt.png, Внимание! Статья-детектор! Одним из побочных эффектов от прочтения этой статьи является так называемый butthurt.<br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%9F%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%BE%D1%81%D1%80%D0%B0%D1%87,"Платформосрач — Lurkmore","
-<span class=""f"">5 дн. назад – </span>Платформосрач (приставкосрач, консолесрач) — дисциплина  Специальной Олимпиады. Заключается в противоборстве и извечном <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%91%D0%BE%D1%80%D0%B8%D1%81_%D0%A1%D1%82%D0%BE%D0%BC%D0%B0%D1%85%D0%B8%D0%BD,"Борис Стомахин — Lurkmore","
-<span class=""f"">6 окт 2012 – </span>Еврейство России должно взяться за оружие, — за бомбу, за пистолет, за автомат Калашникова, наконец! — для защиты себя от <b>...</b><br>
-",2012-11-16
-,lurkmore.to,http://lurkmore.to/%D0%A3%D0%B6%D0%B5_%D0%BD%D0%B5_%D1%82%D0%BE%D1%82,"Уже не тот — Lurkmore","
-<span class=""f"">27 окт 2012 – </span>Уже не тот (кит. 此一时, 彼一时 cǐyīshí, bǐyīshí) — тенденция и общий мем, применимый ко всему, что изменяется со временем. Является <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Norris,"
-<em>Chuck Norris</em> - Wikipedia, the free encyclopedia","Carlos Ray ""<em>Chuck</em>"" <em>Norris</em> (born March 10, 1940) is an American martial artist and actor. After serving in the United States Air Force, he began his rise to fame as <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Norris_facts,"
-<em>Chuck Norris</em> facts - Wikipedia, the free encyclopedia","
-<em>Chuck Norris</em> facts are satirical factoids about martial artist and actor <em>Chuck Norris</em> that have become an Internet phenomenon and as a result have become <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/File:Chuck_Norris_award_2.jpg,"File:<em>Chuck Norris</em> award 2.jpg - Wikipedia, the free encyclopedia","Description: Beverly Hills, California -- Vice Chief of Staff of the Air Force, General John W. Handy, presents martial artist <em>Chuck Norris</em> with the ""Veteran of the <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Norris_Superkicks,"
-<em>Chuck Norris</em> Superkicks - Wikipedia, the free encyclopedia","
-<em>Chuck Norris</em> Superkicks, is a 1983 video game produced by Xonox where the player takes control of <em>Chuck  Norris</em> himself. It was also sold as ""Kung Fu <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/Karate_Kommandos,"Karate Kommandos -  Wikipedia, the free encyclopedia","
-<em>Chuck Norris</em>: Karate Kommandos is an American animated television series that originally aired in 1986 as a syndicated five episode mini-series. It was created <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/File:Chucknorris_ub.jpg,"File:<em>Chucknorris</em> ub.jpg - Wikipedia, the free encyclopedia","File:<em>Chucknorris</em> ub.jpg. From Wikipedia, the free encyclopedia. Jump to: navigation, search. File; File history; File usage.  File:<em>Chucknorris</em> ub.jpg. No higher <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/User:Nayrouz_Aly/Chuck_Norris,"User:Nayrouz Aly/<em>Chuck Norris</em> - Wikipedia, the free encyclopedia","Carlos Ray ""<em>Chuck</em>"" <em>Norris</em> (born March 10, 1940) is an American martial artist, actor and media  personality. After serving in the United States Air Force, <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/Missing_in_Action_(film),"Missing in Action (film) - Wikipedia, the free encyclopedia","Missing in Action is a 1984 action B-movie directed by Joseph Zito and starring <em>Chuck Norris</em>. It is set in the context of the Vietnam War POW/MIA issue. Colonel <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/File:Chuck_Norris_Superkicks_cover_art.jpg,"File:<em>Chuck Norris</em> Superkicks cover art.jpg - Wikipedia, the free <b>...</b>
-","File:<em>Chuck Norris</em> Superkicks cover art.jpg. From Wikipedia, the free encyclopedia. Jump to: navigation, search. File; File history; File usage; Metadata <b>...</b><br>
-",2012-11-16
-"chuck norris",en.wikipedia.org,http://en.wikipedia.org/wiki/File:ChuckNorris200611292256.jpg,"
-<em>Chuck Norris</em> - Wikipedia","English: Martial arts expert and action film star, <em>Chuck Norris</em> signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,_%D0%A7%D0%B0%D0%BA","
-<em>Норрис</em>, Чак — Википедия","
-<em>Chuck Norris</em>, настоящее имя — Карлос Рэй Норрис-младший, англ. Carlos Ray Norris Jr.; 10 марта 1940, Райан, Оклахома) — американский киноактёр и <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%BA%D1%82%D1%8B_%D0%BE_%D0%A7%D0%B0%D0%BA%D0%B5_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81%D0%B5,"Факты о Чаке Норрисе — Википедия","Факты о Чаке Норрисе (англ. <em>Chuck Norris</em> Facts) — интернет-мем, представляющий собой иронические «факты» об известном актёре Чаке Норрисе, <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck Norris</em> 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck Norris</em> signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%B8%D0%B3%D1%80_%D0%BD%D0%B0_Atari_2600,"Список игр на Atari 2600 — Википедия","
-<b>...</b> Ambush (M-Network) — 1982; Artillery Duel/<em>Chuck Norris</em> Superkicks (Xonox) — 1983; Artillery Duel/Ghost Manor (Xonox) — 1983; Artillery Duel/Spike's Peak <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A1%D1%83%D0%BF%D0%B5%D1%80%D0%B8%D1%89%D0%B5%D0%B9%D0%BA%D0%B0_(%D1%84%D0%B8%D0%BB%D1%8C%D0%BC),"Суперищейка — Википедия","Чак Норрис /<em>Chuck Norris</em>/; Мишел Ламар Ричардс · Клайд Кусатсу /Clyde Kusatsu/; Херта Уэр /Herta Ware/; Кармайн Кариди /Carmine Caridi/; Эрик Фон <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D1%83%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%BC%D1%8B%D0%B5_2,"Неудержимые 2 — Википедия","1 2 Jean Claude Van Damme and <em>Chuck Norris</em> join Bruce Willis and Arnold Schwarzenegger in The Expendables 2. Daily Mail (15 декабря 2011).<br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Silent_rage.jpg,"Файл:Silent rage.jpg — Википедия","Источник, http://www.movieline.com/2010/03/happy-70th-<em>chuck</em>-<em>norris</em>-<wbr>celebrating-silent-rage-the-action-stars-wildest-kick.php?page=all. Время создания <b>...</b><br></wbr>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/Put_Yo_Hood_Up,"Put Yo Hood Up  — Википедия","2, «Uhh Ohh», J. Smith, S. <em>Norris</em>, <em>Chuck</em> Leonard, Bo Hagon, Khujo, Knighton, Khujo из Goodie Mob и Bo Hagon, 5:08. 3, «Put Yo Hood Up», J. Smith, S. <em>Norris</em> <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%9F%D1%83%D1%87%D0%BA%D0%BE%D0%B2,_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%AE%D1%80%D1%8C%D0%B5%D0%B2%D0%B8%D1%87","Пучков, Дмитрий Юрьевич — Википедия","
-<b>...</b> мышь (12 oz. Mouse); Папский городок (Popetown); Мохнатики (Fur TV); Чак Норрис и Карате Коммандос (<em>Chuck Norris</em>: Karate Kommandos) <b>...</b><br>
-",2012-11-16
-"chuck norris",ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB:%D0%91%D0%BE%D0%B5%D0%B2%D1%8B%D0%B5_%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B0/%D0%98%D0%B7%D0%B1%D1%80%D0%B0%D0%BD%D0%BD%D0%B0%D1%8F_%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C/%D0%A2%D0%B5%D0%BA%D1%83%D1%89%D0%B0%D1%8F_%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%D0%BA%D0%B0,"Портал:Боевые искусства/Избранная личность/Текущая подборка","
-<em>Chuck Norris</em>, настоящее имя Карлос Рэй Норрис младший, англ. Carlos Ray Norris Jr.; 10 марта 1940, Райан, Оклахома) — американский киноактёр и <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак <em>Норрис</em> — Lurkmore","
-<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-<em>norris</em>-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак <em>Норрис</em> — Lurkmore","
-<span class=""f"">21 авг 2012 – </span><em>Chuck Norris</em>﻿ calling David Guetta ""Hello, David Guеtta? What did you <b>...</b> Чак Норрис хочет стать президентом независимого штата Техас <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
-<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck Norris</em> chuck if <em>Chuck Norris</em> could chuck wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
-<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck Norris</em> without paying it's mana cost. If <em>Chuck Norris</em> is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Google,"Обсуждение:Google — Lurkmore","на правах К.О.: Этого эффекта можно добиться  если вбить в строчку поисковика ""Google <em>Chuck Norris</em>"" и нажать ""Мне повезет"" (в англ. версии ""I'm <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/MySpace,"MySpace — Lurkmore","
-<span class=""f"">14 май 2012 – </span>Некоторое время назад (до 05.10.2008) там вела свой бложек Аватара Гаечки. <em>CHUCK NORRIS</em> IS SUING MYSPACE FOR STEALING <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%A3%D0%BF%D1%8F%D1%87%D0%BA%D0%B0/%D0%A1%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C,"Упячка/Словарь — Lurkmore","
-<span class=""f"">24 окт 2012 – </span>Хрустячне крукурзане глазне со вкусом сгущней и томата (<em>Chuck Norris</em> approved); LЪЙS — аналог этого вашего Lays. Появился <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%92%D0%B0%D1%81%D1%81%D0%B5%D1%80%D0%BC%D0%B0%D0%BD,"Вассерман — Lurkmore","
-<span class=""f"">20 окт 2012 – </span>Есть для OC Android приложение <em>Chuck Norris</em> Facts, если взять оттуда ЛЮБОЙ факт, он окажется спижженым из риальных историй об <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,30,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,32,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
 <em>Chuck</em> Testa — Lurkmore","
 <span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
-",2012-11-16
-"chuck norris",lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%AF%D0%B1%D0%BB%D0%BE%D1%87%D0%BD%D0%B8%D0%BA/%D0%90%D1%80%D1%85%D0%B8%D0%B2/1,"Обсуждение:Яблочник/Архив/1 — Lurkmore","
-<span class=""f"">13 окт 2012 – </span>Известный американский актер и кикбоксер Чак Норрис, <b>...</b> собственного iPhone-приложения под названием <em>Chuck Norris</em>: Bring On The <b>...</b><br>
-",2012-11-16
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,34,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,35,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,36,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,37,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,38,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(TV_series),"
+<em>Chuck</em> (TV series) - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American action-comedy/spy-drama television series created by Josh Schwartz and Chris Fedak. The series is about an ""average <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/ChucK,"
+<em>ChucK</em> - Wikipedia, the free encyclopedia","
+<em>ChucK</em> is a concurrent, strongly timed audio programming language for real-time synthesis, composition, and performance, which runs on Mac OS X, Linux, <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bartowski,"
+<em>Chuck</em> Bartowski - Wikipedia, the free encyclopedia","Charles Irving ""<em>Chuck</em>"" Bartowski is the main and titular character of the American fiction television show <em>Chuck</em> on NBC. He is portrayed by Zachary Levi.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars - Wikipedia, the free encyclopedia","
+<em>Chuck</em> Taylor All Stars, or Converse All Stars, also referred to as ""Converses"", ""<wbr><em>Chuck</em> Taylors"", ""All Stars"", ""<em>Chucks</em>"" or ""Cons"", are canvas and rubber shoes <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_steak,"
+<em>Chuck</em> steak - Wikipedia, the free encyclopedia","
+<em>Chuck</em> steak is a cut of beef and is part of the sub primal cut known as the <em>chuck</em>. The typical <em>chuck</em> steak is a rectangular cut, about 1"" thick and containing parts <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Berry,"
+<em>Chuck</em> Berry - Wikipedia, the free encyclopedia","Charles Edward Anderson ""<em>Chuck</em>"" Berry (born October 18, 1926) is an  American guitarist, singer and songwriter, and one of the pioneers of rock and roll music.<br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Bass,"
+<em>Chuck</em> Bass - Wikipedia, the free encyclopedia","Charles Bartholomew ""<em>Chuck</em>"" Bass is a fictional character in the Gossip Girl series of novels and the television series of the same name, in which he is <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_(engineering),"
+<em>Chuck</em> (engineering) - Wikipedia, the free encyclopedia","A <em>chuck</em> is a specialized type of clamp used to hold an object, usually an object with radial symmetry, especially a cylindrical object. It is most commonly used to <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/List_of_Chuck_episodes,"List of <em>Chuck</em> episodes - Wikipedia, the free encyclopedia","
+<em>Chuck</em> is an American spy action-comedy-drama television series created by Josh Schwartz and Chris Fedak. It premiered on the terrestrial television network <b>...</b><br>
+",2012-11-19,39,
+chuck,en.wikipedia.org,http://en.wikipedia.org/wiki/Chuck_Klosterman,"
+<em>Chuck</em> Klosterman - Wikipedia, the free encyclopedia","Charles John ""<em>Chuck</em>"" Klosterman (born  June 5, 1972) is an American author and essayist who has written for The New York Times Magazine, The Believer, and <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck,"
+<em>Chuck</em> — Википедия","
+<em>Chuck</em> — третий студийный альбом группы Sum 41, выпущенный 12 октября 2004 года. Также это последний альбом, в записи которого участвовал <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Taylor_All-Stars,"
+<em>Chuck</em> Taylor All-Stars — Википедия","
+<em>Chuck</em> Taylor All-Star (также, «ко́нверсы», Converse All-Star) — знаменитые кеды фирмы «Converse», которую основал Маркус Миллс Конверс (англ.<br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D1%80%D0%B8,_%D0%A7%D0%B0%D0%BA","Берри, Чак — Википедия","Чак Бе́рри (англ. <em>Chuck</em> Berry; полное имя — Чарльз Э́двард А́ндерсон Бе́рри<wbr>; род. 18 октября 1926) — американский певец, гитарист,  автор песен.<br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B9%D0%BB:Chuck_Norris_200611292256.jpg,"Файл:<em>Chuck</em> Norris 200611292256.jpg — Википедия","English: Martial arts expert and action film star, <em>Chuck</em> Norris signs a T-shirt for Corporal William P. Kessler, 23 of Cedar Park, Texas. Kessler, a reconnaissance <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_Is_on_Top,"
+<em>Chuck</em> Berry Is on Top — Википедия","
+<em>Chuck</em> Berry Is on Top — третий студийный альбом американского певца Чака Берри. С одной стороны пластинку можно считать сборником, так как в <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Yeager%E2%80%99s_Air_Combat,"
+<em>Chuck</em> Yeager's Air Combat — Википедия","
+<em>Chuck</em> Yeager's Air Combat (рус. «Воздушный бой Чака Йегера») — компьютерная игра жанра авиасимулятор. Выпущена фирмой Electronic Arts для PC <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry_on_Stage,"
+<em>Chuck</em> Berry on Stage — Википедия","
+<em>Chuck</em> Berry on Stage — шестой альбом американского певца Чака Берри. Несмотря на название, все песни были записаны в студии. В американский <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Go_Chuck_Yourself/Happy_Live_Surprise,"Go <em>Chuck</em> Yourself/Happy Live Surprise — Википедия","Go <em>Chuck</em> Yourself (Европа и Северная Америка) или Happy Live Surprise (<wbr>Япония) — живой альбом Sum 41, записанный в Лондоне, Онтарио в апреле <b>...</b><br></wbr>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,http://ru.wikipedia.org/wiki/Chuck_Berry%E2%80%99s_Golden_Hits,"
+<em>Chuck</em> Berry's Golden Hits — Википедия","
+<em>Chuck</em> Berry's Golden Hits — одиннадцатый альбом американского певца Чака Берри. Пластинка не является сборником, как может показаться из <b>...</b><br>
+",2012-11-19,39,
+chuck,ru.wikipedia.org,"http://ru.wikipedia.org/wiki/%D0%A8%D1%83%D0%BB%D1%8C%D0%B4%D0%B8%D0%BD%D0%B5%D1%80,_%D0%A7%D0%B0%D0%BA","Шульдинер, Чак — Википедия","Charles Michael «<em>Chuck</em>» Schuldiner 13 мая 1967 — 13 декабря 2001) — культовый музыкант (США), основатель, гитарист, вокалист, ведущий <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Chuck_Testa,"
+<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">11 май 2012 – </span><em>Chuck</em> Testa (рус. Не-а! Чак Теста) — форсед-мем англоязычных интернетов; сам же Чак Теста — главный герой вирусного ролика, <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Chuck_Testa,"Обсуждение:<em>Chuck</em> Testa — Lurkmore","
+<span class=""f"">5 мар 2012 – </span>Обсуждение:<em>Chuck</em> Testa. Материал из Lurkmore. Перейти к: навигация, поиск. http://www.youtube.com/watch?v=mbUVtfUWwF8. Встречал <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Barrens_chat,"Barrens chat — Lurkmore","
+<span class=""f"">24 фев 2012 – </span><b>...</b> [Player 6] How much wood would <em>Chuck</em> Norris <em>chuck</em> if <em>Chuck</em> Norris could <em>chuck</em> wood? (Сколько дерева Чак Норрис чакнет если бы Чак <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Чак Норрис — Lurkmore","
+<span class=""f"">16 окт 2012 – </span><em>Chuck</em>-norris-karate corvette.jpg. Уилт Чемберлен утверждает, что переспал более чем с 20.000 женщин за всю свою жизнь. А для Чака <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/Lurkmore:%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%D0%B5_%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/A-Z/C,"Lurkmore:Нужные статьи/A-Z/C — Lurkmore","
+<b>...</b> из Lurkmore. Перейти к: навигация, поиск. ← Назад.<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:%D0%A7%D0%B0%D0%BA_%D0%9D%D0%BE%D1%80%D1%80%D0%B8%D1%81,"Обсуждение:Чак Норрис — Lurkmore","
+<span class=""f"">21 авг 2012 – </span>У Чака Норриса не бывает ""мурашек"". Это у мурашек бывает Чак Норрис. <em>Chuck</em> Norris﻿ calling David Guetta ""Hello, David Guеtta?<br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%A7%D0%B0%D0%BA_%D0%9F%D0%B0%D0%BB%D0%B0%D0%BD%D0%B8%D0%BA,"Чак Паланик — Lurkmore","
+<span class=""f"">13 сен 2012 – </span><em>Chuck</em> Palahniuk, укр. Палагнюк) — американский пейсатель-сатирик с хохляцкими корнями, гей и толстый тролль, весьма популярный у <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Magic:_The_Gathering,"Обсуждение:Magic: The Gathering — Lurkmore","
+<span class=""f"">14 сен 2011 – </span>You may play <em>Chuck</em> Norris without paying it's mana cost. If <em>Chuck</em> Norris is in your opening hand and you're not playing first, you may begin the <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9A%D0%BE%D1%81%D0%B8%D0%BB_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9_%D0%BA%D0%BE%D1%81%D0%BE%D0%B9,"Косил косой косой косой  - Луркоморье","
+<span class=""f"">12 ноя 2012 – </span>How much wood would a woodchuck <em>chuck</em>, if a woodchuck would (could) <em>chuck</em> a wood? — сколько чурок заготовил бы сурок, если б <b>...</b><br>
+",2012-11-19,39,
+chuck,lurkmore.to,http://lurkmore.to/%D0%9E%D0%B1%D1%81%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5:Candlejack,"Обсуждение:Candlejack — Lurkmore","
+<span class=""f"">17 май 2012 – </span>Don't mess with <em>Chuck</em>! Да достали вы обрывать предложения на полусло ВЕ! Я придумал! Чтобы не изчезнуть, надо попросить <b>...</b><br>
+",2012-11-19,39,

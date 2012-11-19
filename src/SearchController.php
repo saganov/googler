@@ -31,16 +31,16 @@ class SearchController
         $view = new View('index.html.php');
         try
         {
-            $res = $this->search(
+            $res = $this->db->select(
                 $clause,                     // where clause
                 $this->itemsPerPage * $page, // from line
                 $this->itemsPerPage);        // limit
 
             if(empty($res))
             {
-                $this->db->insert($this->googler->get($this->query));
+                $this->db->insert($this->googler->get($query));
                 /** @todo: think - how to improve here */
-                $res = $this->search(
+                $res = $this->db->select(
                     $clause,                     // where clause
                     $this->itemsPerPage * $page, // from line
                     $this->itemsPerPage);        // limit
@@ -48,6 +48,11 @@ class SearchController
         
             $content = new View('content.html.php');
             $content->set(array('query'=>$query, 'page'=>$page+1, 'items'=>$res));
+            
+            $this->db->update(array('show'=>'+1'),
+                              $clause,
+                              $this->itemsPerPage * $page, // from line
+                              $this->itemsPerPage);        // limit
         }
         catch(Exception $e)
         {
@@ -61,7 +66,7 @@ class SearchController
 
     protected function search($clause, $from, $limit)
     {
-        return $this->db->select($clause, $from, $limit);
+
     }
     
     
