@@ -14,7 +14,7 @@ class View
 
         public static function setTemplateDir($dir)
         {
-            static::$template_dir = $dir;
+            self::$template_dir = $dir;
         }
         
         public function set(array $data)
@@ -26,7 +26,7 @@ class View
         {
                 ob_start();
                 extract($this->data);
-                include(static::$template_dir .'/'. $this->template);
+                include(self::$template_dir .'/'. $this->template);
                 $out = ob_get_contents();
                 ob_end_clean();
                 return $out;
