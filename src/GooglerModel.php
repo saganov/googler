@@ -49,11 +49,12 @@ class GooglerModel
         while($page < 4)
         {
             $resource = curl_init($google_search_url/* .'&start='. $page++*/);
+/*
             curl_setopt($resource, CURLOPT_HTTPHEADER, $header); 
             curl_setopt($resource, CURLOPT_ENCODING, 'gzip,deflate'); 
             curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
-
-            //curl_setopt_array($resource,$options);
+*/            
+            curl_setopt_array($resource,$options);
             $html = curl_exec($resource);
 
             if (200 != $code = curl_getinfo($resource, CURLINFO_HTTP_CODE))

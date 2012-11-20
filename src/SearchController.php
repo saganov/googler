@@ -64,9 +64,10 @@ class SearchController
         $view->output();
     }
 
-    protected function search($clause, $from, $limit)
+    public function ajaxAction($url)
     {
-
+        /** @todo: implement the method */
+        echo json_encode(array('url' => $url));
     }
     
     

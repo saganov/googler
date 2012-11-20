@@ -7,18 +7,25 @@ require_once dirname(__DIR__)."/src/GooglerModel.php";
 class App
 {
     protected $controller;
+    protected $method;
     
-    public function __construct()
+    public function __construct($method)
     {
         $this->controller = new SearchController(
             new DatabaseModel(dirname(__DIR__).'/data/DB.csv'),
             new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
+
+        $this->method = $method .'Action';
     }
     
-
-    public function run($query, $source, $page)
+    public function run()
     {
-        $this->controller->listAction($query, $source, $page);
+        if(is_callable(array($this->controller, $this->method)))
+        {
+            return call_user_func_array(
+                array($this->controller, $this->method),
+                func_get_args());
+        }
     }
 
 }
