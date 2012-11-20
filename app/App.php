@@ -22,9 +22,15 @@ class App
     {
         if(is_callable(array($this->controller, $this->method)))
         {
+            $arguments = array()
+            foreach(func_get_args() as $arg)
+            {
+                $arguments[] = $arg;
+            }
+
             return call_user_func_array(
                 array($this->controller, $this->method),
-                func_get_args());
+                $arguments);
         }
     }
 
