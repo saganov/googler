@@ -1,8 +1,8 @@
 <?php
 
-require_once dirname(__DIR__)."/src/SearchController.php";
-require_once dirname(__DIR__)."/src/DatabaseModel.php";
-require_once dirname(__DIR__)."/src/GooglerModel.php";
+require_once dirname(dirname(__FILE__))."/src/SearchController.php";
+require_once dirname(dirname(__FILE__))."/src/DatabaseModel.php";
+require_once dirname(dirname(__FILE__))."/src/GooglerModel.php";
 
 class App
 {
@@ -12,7 +12,7 @@ class App
     public function __construct($method)
     {
         $this->controller = new SearchController(
-            new DatabaseModel(dirname(__DIR__).'/data/DB.csv'),
+            new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
             new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
 
         $this->method = $method .'Action';

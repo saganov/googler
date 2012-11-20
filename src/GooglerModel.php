@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__)."/vendor/phpQuery/phpQuery.php";
+require_once dirname(dirname(__FILE__))."/vendor/phpQuery/phpQuery.php";
 
 class GooglerModel
 {

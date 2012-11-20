@@ -1,6 +1,6 @@
 <?php
 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER["REQUEST_URI"]))
+if (php_sapi_name() == 'cli-server' && preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER["REQUEST_URI"]))
 {
     return false;    // serve the requested resource as-is.
 }
@@ -15,10 +15,10 @@ else
      */
     $method = isset($_REQUEST['m']) ? $_REQUEST['m'] : 'list'; /** @todo: should be replaced by index */
     
-    require_once (dirname(__DIR__) ."/app/App.php");
-    require_once (dirname(__DIR__)."/src/View.php");
+    require_once (dirname(dirname(__FILE__)) ."/app/App.php");
+    require_once (dirname(dirname(__FILE__))."/src/View.php");
     
-    View::setTemplateDir(dirname(__DIR__) ."/view/web");
+    View::setTemplateDir(dirname(dirname(__FILE__)) ."/view/web");
     
     /** @todo: Replace this code into APP */
     $app = new App($method);
