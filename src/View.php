@@ -1,5 +1,7 @@
 <?php
 
+require_once 'ViewHelper.php';
+
 class View
 {
         protected static $template_dir;

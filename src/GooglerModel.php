@@ -39,7 +39,8 @@ class GooglerModel
             CURLOPT_COOKIEJAR      => "cookie.txt",
             CURLOPT_USERAGENT      => "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
             CURLOPT_REFERER        => "http://www.google.com/",
-                         ); 
+                         );
+
         $google_search_url = "http://www.google.com/search?q=site:". urlencode($source .' '.$query);
 
         /** @todo: google search "site:source query" */
@@ -48,15 +49,14 @@ class GooglerModel
 
         while($page < 4)
         {
-            $resource = curl_init($google_search_url/* .'&start='. $page++*/);
+            $resource = curl_init($google_search_url .'&start='. $page++);
 /*
             curl_setopt($resource, CURLOPT_HTTPHEADER, $header); 
             curl_setopt($resource, CURLOPT_ENCODING, 'gzip,deflate'); 
             curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
-*/            
+*/          
             curl_setopt_array($resource,$options);
             $html = curl_exec($resource);
-
             if (200 != $code = curl_getinfo($resource, CURLINFO_HTTP_CODE))
             {
                 throw new Exception('Google server returned an unsupported HTTP header: '. $code);
@@ -77,8 +77,12 @@ class GooglerModel
                 
                 $title = $pq->find('h3.r > a')->html();
                 $url   = $pq->find('h3.r > a')->attr('href');
+                if (preg_match('/^.*(http:\/\/.*)$/', $url, $matches))
+                {
+                    $url = $matches[1];
+                }
                 $desc  = $pq->find('div.s > span.st')->html();
-                
+
                 $res[] = array(
                     'query_phrase'  => $query,
                     'source_domain' => $source,

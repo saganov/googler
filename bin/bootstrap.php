@@ -25,5 +25,5 @@ require_once (dirname(dirname(__FILE__))."/src/View.php");
 
 View::setTemplateDir(dirname(dirname(__FILE__)) ."/view/cli");
 
-$app = new App();
+$app = new App('list');
 $app->run($query, $source, $page);

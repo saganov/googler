@@ -38,6 +38,7 @@ class DatabaseModel
         $number = 0;
         $exist = FALSE;
         $db = fopen($this->dbName, "r");
+
         while (($row = $this->readLine($db)) && (!$limit || count($res) < $limit))
         {
             $match_number = 0;
@@ -46,12 +47,12 @@ class DatabaseModel
                 if(isset($row[$label]) && $row[$label] == $value)
                 {
                     $match_number++;
-                    $exist = TRUE;
                 }
             }
             
             if($match_number == count($where))
             {
+                $exist = TRUE;
                 $number++;
                 if($number >= $from)
                 {
@@ -68,6 +69,33 @@ class DatabaseModel
         }
 
         return $res;
+    }
+
+    public function count($where = array())
+    {
+        $number = 0;
+        $db = fopen($this->dbName, "r");
+
+        while ($row = $this->readLine($db))
+        {
+            $match_number = 0;
+            foreach($where as $label=>$value)
+            {
+                if(isset($row[$label]) && $row[$label] == $value)
+                {
+                    $match_number++;
+                }
+            }
+            
+            if($match_number == count($where))
+            {
+                $number++;
+            }
+        }
+
+        fclose($db);
+
+        return $number;
     }
 
     public function insert(array $data)

@@ -1,12 +1,18 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset=utf-8>
-    <title>Goooogleeer</title>
-    <script src="js/jquery-1.8.3.min.js"></script>
-    <script src="js/script.js"></script>
-  </head>
-  <body>
-    <?= $content ?>
-  </body>
-</html>
+<form action="/">
+  <ul style="list-style-type: none;">
+    <li>
+      <label for="query_phrase">Query Phrase:</label>
+      <input id="query_phrase" type="text" name="q" />
+    </li>
+    <li>
+      <label for="source_domain">Source Domain:</label>
+      <select id="source_domain" name="s">
+        <option value=""></option>
+        <?php foreach ($sources as $domain): ?>
+        <option value="<?= $domain ?>"><?= $domain ?></option>
+        <?php endforeach; ?>
+      </select>
+    </li>
+    <li><input type="hidden" name="m" value="list"><input type="submit"></li>
+</form>
+
