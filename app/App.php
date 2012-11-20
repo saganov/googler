@@ -22,7 +22,7 @@ class App
     {
         if(is_callable(array($this->controller, $this->method)))
         {
-            $arguments = array()
+            $arguments = array();
             foreach(func_get_args() as $arg)
             {
                 $arguments[] = $arg;
