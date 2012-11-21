@@ -7,6 +7,8 @@ class DatabaseModel
     
     protected $header;
 
+    protected $cache = array();
+
     public function __construct($file)
     {
         $this->dbName = $file;
@@ -31,14 +33,68 @@ class DatabaseModel
             return FALSE;
         }
     }
-
+    
     public function select($where = array(), $from = 0, $limit = FALSE)
+    {
+        $cache_key = serialize($where);
+        $all_res = isset($this->cache[$cache_key]) ? unserialize($this->serialise($where)) : $this->doSelectDb($where);
+        usort($all_res, array($this, 'sortByCtr'));
+        $this->serialise[$cache_key] = serialize($all_res);
+        
+        $res = array();
+        $number = 0;
+        $exist = FALSE;
+        $total = count($all_res);
+        $i = 0;
+        while (($i < $total) && (!$limit || count($res) < $limit))
+        {
+            $row = $all_res[$i];
+            $i++;
+            $match_number = 0;
+            foreach($where as $label=>$value)
+            {
+                if(isset($row[$label]) && $row[$label] == $value)
+                {
+                    $match_number++;
+                }
+            }
+            
+            if($match_number == count($where))
+            {
+                $exist = TRUE;
+                $number++;
+                if($number >= $from)
+                {
+                    $res[] = $row;
+                }
+            }
+        }
+
+        if($exist && empty($res))
+        {
+            throw new Exception('Offset');
+        }
+        
+        return $res;
+    }
+
+    private function sortByCtr($left, $right)
+    {
+        $left_ctr  = (int)$left['click']/(int)$left['show'];
+        $right_ctr = (int)$right['click']/(int)$right['show'];
+        if ($left_ctr == $right_ctr)
+        {
+            return 0;
+        }
+        return ($left_ctr > $right_ctr) ? -1 : 1;
+    }
+
+    public function doSelectDb($where = array(), $from = 0, $limit = FALSE)
     {
         $res = array();
         $number = 0;
         $exist = FALSE;
         $db = fopen($this->dbName, "r");
-
         while (($row = $this->readLine($db)) && (!$limit || count($res) < $limit))
         {
             $match_number = 0;
@@ -73,29 +129,9 @@ class DatabaseModel
 
     public function count($where = array())
     {
-        $number = 0;
-        $db = fopen($this->dbName, "r");
-
-        while ($row = $this->readLine($db))
-        {
-            $match_number = 0;
-            foreach($where as $label=>$value)
-            {
-                if(isset($row[$label]) && $row[$label] == $value)
-                {
-                    $match_number++;
-                }
-            }
-            
-            if($match_number == count($where))
-            {
-                $number++;
-            }
-        }
-
-        fclose($db);
-
-        return $number;
+        $cache_key = serialize($where);
+        $all_res = isset($this->cache[$cache_key]) ? unserialize($this->serialise($where)) : $this->doSelectDb($where);
+        return (count($all_res));
     }
 
     public function insert(array $data)
@@ -170,5 +206,7 @@ class DatabaseModel
         unlink($this->dbName);
         // rename target file to source file
         rename($tmp, $this->dbName);
+        
+        $this->cache = array();
     }
 }
