@@ -1,4 +1,4 @@
-<a href="/">Back</a>
+<a href="index.php">Back</a>
 <br/>
 <p>Query Phrase: <b><?= $query ?></b> (page: <?= $page ?>)</p>
 
@@ -12,4 +12,4 @@
 </div>
 <?php endforeach; ?>
 <br/ >
-<div clas="pager"><?php echo ViewHelper::pager($total, $page, "/?m=list&q=$query&s=$source"); ?></div>
+<div clas="pager"><?php echo ViewHelper::pager($total, $page, "index.php?m=list&q=$query&s=$source"); ?></div>

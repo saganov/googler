@@ -1,4 +1,4 @@
-<form action="/">
+<form action="index.php">
   <ul style="list-style-type: none;">
     <li>
       <label for="query_phrase">Query Phrase:</label>
