@@ -25,23 +25,25 @@ class GooglerModel
         //$header[] = 'Keep-Alive: 115';
         //$header[] = 'Connection: keep-alive';
         
+        $google_search_url = "https://www.google.com/search?q=site:". urlencode($source .' '.$query);
 
         $options = array(
             CURLOPT_RETURNTRANSFER => true,     // return web page
             CURLOPT_HEADER         => false,    // don't return headers
 //            CURLOPT_FOLLOWLOCATION => true,     // follow redirects
-            CURLOPT_ENCODING       => "",       // handle all encodings
+            CURLOPT_ENCODING       => "gzip,deflate",       // handle all encodings
             CURLOPT_AUTOREFERER    => true,     // set referer on redirect
             CURLOPT_CONNECTTIMEOUT => 120,      // timeout on connect
             CURLOPT_TIMEOUT        => 120,      // timeout on response
             CURLOPT_MAXREDIRS      => 10,       // stop after 10 redirects
             CURLOPT_COOKIEFILE     => "cookie.txt",
             CURLOPT_COOKIEJAR      => "cookie.txt",
-            CURLOPT_USERAGENT      => "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
-            CURLOPT_REFERER        => "http://www.google.com/",
-                         );
+            //CURLOPT_USERAGENT      => "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
+            CURLOPT_USERAGENT      => "Mozilla/5.0 (X11; Linux i686; rv:16.0) Gecko/20100101 Firefox/16.0",
 
-        $google_search_url = "http://www.google.com/search?q=site:". urlencode($source .' '.$query);
+            //CURLOPT_REFERER        => "http://www.google.com/",
+            CURLOPT_REFERER        => $google_search_url,
+                         );
 
         /** @todo: google search "site:source query" */
         $number = 0;
