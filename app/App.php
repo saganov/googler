@@ -13,7 +13,10 @@ class App
     {
         $this->controller = new SearchController(
             new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
-            new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
+                                                // number of the google search result to parse
+            new GooglerModel(array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to'), 10),
+            // result items per page to display
+            10);
 
         $this->method = $method .'Action';
     }
