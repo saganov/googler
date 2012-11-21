@@ -80,8 +80,8 @@ class DatabaseModel
 
     private function sortByCtr($left, $right)
     {
-        $left_ctr  = (int)$left['click']/(int)$left['show'];
-        $right_ctr = (int)$right['click']/(int)$right['show'];
+        $left_ctr  = (((int)$left['show'] < 1) ? 0 : (int)$left['click']/(int)$left['show']);
+        $right_ctr = (((int)$right['show'] < 1) ? 0 : (int)$right['click']/(int)$right['show']);
         if ($left_ctr == $right_ctr)
         {
             return 0;
