@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('.search_result a').click(function(){
             var $this = $(this);
             $.ajax({
-                url: "/?m=ajax",
+                url: "index.php?m=ajax",
                 type: "POST",
                 data: {url: $this.attr('href')}
             }).done(function(data) { 
