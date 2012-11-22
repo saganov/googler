@@ -24,7 +24,6 @@ class GooglerModel
         //$header[] = 'Accept-Charset: windows-1251,utf-8;q=0.7,*;q=0.7';
         //$header[] = 'Keep-Alive: 115';
         //$header[] = 'Connection: keep-alive';
-        
         $google_search_url = "https://www.google.com/search?q=site:". urlencode($source .' '.$query);
 
         $options = array(
@@ -103,7 +102,7 @@ class GooglerModel
         $res = array();
         foreach($this->sources as $source)
         {
-            $res = array_merge($res, $this->search($query, $source));
+            $res = array_merge($res, $this->search($query, $source['domain']));
         }
         return $res;
     }
