@@ -2,14 +2,14 @@
 
 class SearchController
 {
-    protected $db;
+    protected $cache;
     protected $googler;
     
     protected $itemsPerPage = 10;
     
-    public function __construct($db, $googler, $itemsPerPage = 10)
+    public function __construct($cache, $googler, $itemsPerPage = 10)
     {
-        $this->db = $db;
+        $this->cache = $cache;
         $this->googler = $googler;
         $this->itemsPerPage = $itemsPerPage;
     }
@@ -19,7 +19,7 @@ class SearchController
         $view = new View('body.html.php');
         $content = new View('index.html.php');
         //$content->set(array('sources'=>array('en.wikipedia.org', 'ru.wikipedia.org', 'lurkmore.to')));
-        $content->set(array('sources'=>$this->db->select('source_domain')));
+        $content->set(array('sources'=>$this->cache->select('source_domain')));
         $view->set(array('content'=>$content->parse()));
         $view->output();
     }
@@ -29,40 +29,19 @@ class SearchController
         $view = new View('body.html.php');
         try
         {
-            $query_id = $this->db->select('query_phrase', array('text'=>$query));
-            $query_id = isset($query_id[0]) ? $query_id[0]['id'] : FALSE;
-            if(!$query_id)
+            $count = $this->cache->countList($query);
+            if($count < 1)
             {
-                $new = $this->googler->get($query);
-                $this->db->insert('query_phrase', array(array('text'=>$query)));
-                $query_id = $this->db->select('query_phrase', array('text'=>$query));
-                $query_id = isset($query_id[0]) ? $query_id[0]['id'] : FALSE;
-                
-                foreach($new as &$n)
-                {
-                    $n['query_phrase'] = $query_id;
-                    $source_id = $this->db->select('source_domain', array('domain'=>$n['source_domain']));
-                    $source_id = isset($source_id[0]) ? $source_id[0]['id'] : FALSE;
-                    $n['source_domain'] = $source_id;
-                }
-
-                $this->db->insert('search_item', $new);
+                $this->cache->insertList($query, $this->googler->get($query));
             }
-
-            $clause = array('query_phrase'=>$query_id);
-            if(!empty($source))
-            {
-                $clause['source_domain'] = $source;
-            }
-            $count = $this->db->count('search_item', $clause);
-            $this->db->update('search_item', 
-                              array('show'=>'`show`+1'),
-                              $clause,
-                              $this->itemsPerPage * $page, // from line
-                              $this->itemsPerPage);        // limit
+            $count = $this->cache->countList($query);
+            $result = $this->cache->getList($query,
+                                            $source,
+                                            $this->itemsPerPage * $page,
+                                            $this->itemsPerPage);
             
-            $res = $this->db->select('search_item', 
-                                     $clause,                     // where clause
+            $this->cache->updateList($query,
+                                     $source,
                                      $this->itemsPerPage * $page, // from line
                                      $this->itemsPerPage);        // limit
             
@@ -71,7 +50,7 @@ class SearchController
                                 'source'=>$source,
                                 'page'=>$page+1,
                                 'total'=>ceil($count/$this->itemsPerPage),
-                                'items'=>$res));
+                                'items'=>$result));
         }
         catch(Exception $e)
         {
@@ -85,8 +64,8 @@ class SearchController
 
     public function ajaxAction($url)
     {
-        $this->db->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
-        $rows = $this->db->select('search_item', array('url'=>$url), 0, 1);
+        $this->cache->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
+        $rows = $this->cache->select('search_item', array('url'=>$url), 0, 1);
         $ajax = new View('ajax.html.php');
         $ajax->set(array('data' => array('click' => (int)$rows[0]['click'])));
         $ajax->output();

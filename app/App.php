@@ -4,6 +4,7 @@ require_once dirname(dirname(__FILE__))."/src/SearchController.php";
 //require_once dirname(dirname(__FILE__))."/src/DatabaseModel.php";
 require_once dirname(dirname(__FILE__))."/src/dbengines/PdoEngine.php";
 require_once dirname(dirname(__FILE__))."/src/GooglerModel.php";
+require_once dirname(dirname(__FILE__))."/src/SearchModel.php";
 
 class App
 {
@@ -14,7 +15,7 @@ class App
     {
         $db = new PdoEngine('googler', 'root', 'root');
         $this->controller = new SearchController(
-            $db, //new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
+            new SearchModel($db), //new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
                       // number of the google search result to parse
             new GooglerModel($db->select('source_domain'), 10),
             // result items per page to display

@@ -88,12 +88,12 @@ class PdoEngine
         $values = array();
         foreach($data as $row)
         {
-            $values[] = "('". implode("' , '", array_map(array($this->db, 'quote'), $row)) ."')";
+            $values[] = "(". implode(" , ", array_map(array($this->db, 'quote'), $row)) .")";
         }
         
         $sql .= implode(", ", $values);
-        echo $sql ."\n";
-        file_put_contents('insert.sql', $sql);
+        //echo $sql ."<br/>\n";
+        //file_put_contents('insert.sql', $sql);
         $statement = $this->db->query($sql);
     }
 
