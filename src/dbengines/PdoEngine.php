@@ -115,7 +115,7 @@ class PdoEngine
             {
                 $ids[] = $row['id'];
             }
-            $where = "WHERE `id` IN (". implode(', ', $ids) .")";
+            $where = "WHERE `{$table}`.`id` IN (". implode(', ', $ids) .")";
         }
         else
         {
