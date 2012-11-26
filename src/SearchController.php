@@ -35,15 +35,16 @@ class SearchController
                 $this->cache->insertList($query, $this->googler->get($query));
             }
             $count = $this->cache->countList($query);
-            $result = $this->cache->getList($query,
-                                            $source,
-                                            $this->itemsPerPage * $page,
-                                            $this->itemsPerPage);
             
             $this->cache->updateList($query,
                                      $source,
                                      $this->itemsPerPage * $page, // from line
                                      $this->itemsPerPage);        // limit
+
+            $result = $this->cache->getList($query,
+                                            $source,
+                                            $this->itemsPerPage * $page,
+                                            $this->itemsPerPage);
             
             $content = new View('content.html.php');
             $content->set(array('query'=>$query,
