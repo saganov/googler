@@ -12,6 +12,8 @@ class SearchController
         $this->cache = $cache;
         $this->googler = $googler;
         $this->itemsPerPage = $itemsPerPage;
+
+        ini_set('magic_quotes_gpc', '0');
     }
 
     public function indexAction()
@@ -31,40 +33,40 @@ class SearchController
 
     protected function decode(/*string*/$data)
     {
-        //return json_decode($data, TRUE);
-        return unserialize($data);
+        return json_decode($data, TRUE);
+        //return unserialize($data);
     }
 
     protected function encode(array $data)
     {
-        //return json_encode($data);
-        return serialize($data);
+        return json_encode($data);
+        //return serialize($data);
     }
 
     protected function isUniqueVisit($query = NULL, $source = NULL, $page = 0)
     {
         $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search'], TRUE) : array());
+        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search']) : array());
         return (!isset($search[$key]));
     }
 
     protected function isUniqueClick($url)
     {
-        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click'], TRUE) : array());
+        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click']) : array());
         return (!isset($click[$url]));
     }
 
     protected function addVisit($query = NULL, $source = NULL, $page = 0)
     {
         $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search'], TRUE) : array());
+        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search']) : array());
         $search[$key] = time();
         return $this->encode($search);
     }
 
     protected function addClick($url)
     {
-        $click = (isset($_COOKIE['click']) ? json_decode($_COOKIE['click'], TRUE) : array());
+        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click']) : array());
         $click[$url] = time();
         return $this->encode($click);
     }
