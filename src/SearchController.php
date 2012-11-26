@@ -47,6 +47,7 @@ class SearchController
         $key = $this->key($query, $source, $page);
         $search = (isset($_COOKIE['search']) ? json_decode($_COOKIE['search'], TRUE) : array());
         $search[$key] = time();
+        View::debug('cookie', $search);
         return json_encode($search);
     }
 

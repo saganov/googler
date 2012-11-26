@@ -6,6 +6,7 @@ class View
 {
         protected static $template_dir;
         protected static $cookie = array();
+        protected static $debug = array();
         
         protected $template;
         protected $data = array();
@@ -24,6 +25,12 @@ class View
         {
             self::$cookie[$name] = $value;
         }
+
+        public static function debug($key, $data)
+        {
+            self::$debug[$key] = $data;
+        }
+        
         
         public function set(array $data)
         {               
@@ -46,8 +53,15 @@ class View
             {
                 setcookie($name, $value);
             }
+            
+            foreach(self::$debug as $key=>$data)
+            {
+                echo "<pre>". var_export($data, TRUE) ."</pre>\n";
+            }
+
             echo $this->parse();
             self::$cookie = array();
+            self::$debug = array();
         }
 
 }
