@@ -42,7 +42,7 @@ class SearchModel
         }
 
         $sql .= PdoEngine::makeClause($where) ." "
-            //. PdoEngine::makeOrder($order) ." "
+            . PdoEngine::makeOrder(array('fields'=>'`click`/`show`', 'direction'=>'DESC')) ." "
             . PdoEngine::makeLimit($from, $limit);
         return $this->db->query($sql);
     }
