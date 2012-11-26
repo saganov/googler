@@ -97,7 +97,7 @@ class PdoEngine
         $statement = $this->db->query($sql);
     }
 
-    public function update($table, array $data, array $where = array(), $from = 0, $limit = FALSE)
+    public function update($table, array $data, array $where = array(), $from = 0, $limit = FALSE, array $order = array())
     {
         $sql ="UPDATE `{$table}` SET ";
         $set = array();
@@ -109,7 +109,7 @@ class PdoEngine
         
         if($limit !== FALSE)
         {
-            $rows = $this->select($table, $where, $from, $limit);
+            $rows = $this->select($table, $where, $from, $limit, $order);
             $ids = array();
             foreach($rows as $row)
             {

@@ -71,7 +71,7 @@ class SearchModel
         {
             $clause['source_domain'] = $source;
         }
-        $this->db->update('search_item', array('show'=>'`show`+1'), $clause, $from, $limit);
+        $this->db->update('search_item', array('show'=>'`show`+1'), $clause, $from, $limit, array('fields'=>'`click`/`show`', 'direction'=>'DESC'));
     }
 
 }
