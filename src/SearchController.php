@@ -24,6 +24,39 @@ class SearchController
         $view->output();
     }
     
+    protected function key($query = NULL, $source = NULL, $page = 0)
+    {
+        return $query.'_'.$source.'_'.$page;
+    }
+
+    protected function isUniqueVisit($query = NULL, $source = NULL, $page = 0)
+    {
+        $key = $this->key($query, $source, $page);
+        $search = (isset($_COOKIE['search']) ? json_decode($_COOKIE['search'], TRUE) : array());
+        return (!isset($search[$key]));
+    }
+
+    protected function isUniqueClick($url)
+    {
+        $click = (isset($_COOKIE['click']) ? json_decode($_COOKIE['click'], TRUE) : array());
+        return (!isset($click[$url]));
+    }
+
+    protected function addVisit($query = NULL, $source = NULL, $page = 0)
+    {
+        $key = $this->key($query, $source, $page);
+        $search = (isset($_COOKIE['search']) ? json_decode($_COOKIE['search'], TRUE) : array());
+        $search[$key] = time();
+        return json_encode($search);
+    }
+
+    protected function addClick($url)
+    {
+        $click = (isset($_COOKIE['click']) ? json_decode($_COOKIE['click'], TRUE) : array());
+        $click[$url] = time();
+        return json_encode($click);
+    }
+
     public function listAction($query = NULL, $source = NULL, $page = 0)
     {
         $view = new View('body.html.php');
@@ -36,11 +69,14 @@ class SearchController
             }
             $count = $this->cache->countList($query);
             
-            $this->cache->updateList($query,
-                                     $source,
-                                     $this->itemsPerPage * $page, // from line
-                                     $this->itemsPerPage);        // limit
-
+            if($this->isUniqueVisit($query, $source, $page))
+            {
+                View::setcookie('search', $this->addVisit($query, $source, $page));
+                $this->cache->updateList($query,
+                                         $source,
+                                         $this->itemsPerPage * $page, // from line
+                                         $this->itemsPerPage);        // limit
+            }
             $result = $this->cache->getList($query,
                                             $source,
                                             $this->itemsPerPage * $page,
@@ -65,10 +101,20 @@ class SearchController
 
     public function ajaxAction($url)
     {
-        $this->cache->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
-        $rows = $this->cache->select('search_item', array('url'=>$url), 0, 1);
-        $ajax = new View('ajax.html.php');
-        $ajax->set(array('data' => array('click' => (int)$rows[0]['click'])));
-        $ajax->output();
+        if($this->isUniqueClick($url))
+        {
+            View::setcookie('click', $this->addClick($url));
+            $this->cache->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
+            $rows = $this->cache->select('search_item', array('url'=>$url), 0, 1);
+            $ajax = new View('ajax.html.php');
+            $ajax->set(array('data' => array('click' => (int)$rows[0]['click'])));
+            $ajax->output();
+        }
+        else
+        {
+            $ajax = new View('ajax.html.php');
+            $ajax->set(array('data' => array('click'=>FALSE)));
+            $ajax->output();
+        }
     }
 }
