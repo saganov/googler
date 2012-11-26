@@ -107,7 +107,7 @@ class PdoEngine
         }
         $sql .= implode(', ', $set);
         
-        if($from !== 0 && $limit !== FALSE)
+        if($limit !== FALSE)
         {
             $rows = $this->select($table, $where, $from, $limit);
             $ids = array();
