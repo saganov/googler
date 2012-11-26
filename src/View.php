@@ -49,11 +49,13 @@ class View
 
         public function output()
         {
+            $quotes = ini_get('magic_quotes_gpc');
+            ini_set('magic_quotes_gpc', '0');
             foreach(self::$cookie as $name=>$value)
             {
                 setcookie($name, $value);
             }
-            
+            ini_set('magic_quotes_gpc', $quotes);
             foreach(self::$debug as $key=>$data)
             {
                 echo "<pre>$key: <br/>". var_export($data, TRUE) ."</pre>\n";
