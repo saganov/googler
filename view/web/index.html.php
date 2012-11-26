@@ -9,7 +9,7 @@
       <select id="source_domain" name="s">
         <option value=""></option>
         <?php foreach ($sources as $domain): ?>
-        <option value="<?= $domain['id'] ?>"><?= $domain['domain'] ?></option>
+        <option value="<?= $domain['domain'] ?>"><?= $domain['domain'] ?></option>
         <?php endforeach; ?>
       </select>
     </li>

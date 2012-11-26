@@ -19,12 +19,19 @@ class SearchModel
         return $this->db->update($table, $data, $where, $from, $limit);
     }
 
-    public function countList($query)
+    public function countList($query, $source = NULL)
     {
         $sql = "SELECT COUNT(*) AS `count` FROM `search_item` "
             ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`search_item`.`query_phrase` "
-            ."WHERE `query_phrase`.`text`='$query' LIMIT 1";
+            ."LEFT JOIN `source_domain` ON `source_domain`.`id`=`search_item`.`source_domain` ";
 
+        $where = array('text'=>$query);
+        if(!empty($source))
+        {
+            $where['domain'] = $source;
+        }
+
+        $sql .= PdoEngine::makeClause($where);
         $statement = $this->db->query($sql);
         return $statement[0]['count'];
     }

@@ -76,12 +76,12 @@ class SearchController
         $view = new View('body.html.php');
         try
         {
-            $count = $this->cache->countList($query);
+            $count = $this->cache->countList($query, $source);
             if($count < 1)
             {
                 $this->cache->insertList($query, $this->googler->get($query));
             }
-            $count = $this->cache->countList($query);
+            $count = $this->cache->countList($query, $source);
             
             if($this->isUniqueVisit($query, $source, $page))
             {
