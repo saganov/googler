@@ -29,33 +29,44 @@ class SearchController
         return $query.'_'.$source.'_'.$page;
     }
 
+    protected function decode(/*string*/$data)
+    {
+        //return json_decode($data, TRUE);
+        return unserialize($data);
+    }
+
+    protected function encode(array $data)
+    {
+        //return json_encode($data);
+        return serialize($data);
+    }
+
     protected function isUniqueVisit($query = NULL, $source = NULL, $page = 0)
     {
         $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? json_decode($_COOKIE['search'], TRUE) : array());
+        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search'], TRUE) : array());
         return (!isset($search[$key]));
     }
 
     protected function isUniqueClick($url)
     {
-        $click = (isset($_COOKIE['click']) ? json_decode($_COOKIE['click'], TRUE) : array());
+        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click'], TRUE) : array());
         return (!isset($click[$url]));
     }
 
     protected function addVisit($query = NULL, $source = NULL, $page = 0)
     {
         $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? json_decode($_COOKIE['search'], TRUE) : array());
+        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search'], TRUE) : array());
         $search[$key] = time();
-        View::debug('cookie', $search);
-        return json_encode($search);
+        return $this->encode($search);
     }
 
     protected function addClick($url)
     {
         $click = (isset($_COOKIE['click']) ? json_decode($_COOKIE['click'], TRUE) : array());
         $click[$url] = time();
-        return json_encode($click);
+        return $this->encode($click);
     }
 
     public function listAction($query = NULL, $source = NULL, $page = 0)

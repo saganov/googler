@@ -56,7 +56,7 @@ class View
             
             foreach(self::$debug as $key=>$data)
             {
-                echo "<pre>". var_export($data, TRUE) ."</pre>\n";
+                echo "<pre>$key: <br/>". var_export($data, TRUE) ."</pre>\n";
             }
 
             echo $this->parse();
