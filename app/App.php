@@ -17,7 +17,7 @@ class App
         $this->controller = new SearchController(
             new SearchModel($db), //new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
                       // number of the google search result to parse
-            new GooglerModel($db->select('source_domain'), 10),
+            new GooglerModel($db->select('source_domain'), 15),
             // result items per page to display
             10);
 
