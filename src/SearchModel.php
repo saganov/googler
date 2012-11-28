@@ -76,9 +76,20 @@ class SearchModel
         $clause = array('query_phrase'=>$res[0]['id']);
         if(!empty($source))
         {
-            $clause['source_domain'] = $source;
+            $res = $this->db->query("SELECT `id` FROM `source_domain` WHERE `domain`='{$source}'");
+            $clause['source_domain'] = $res[0]['id'];
         }
-        $this->db->update('search_item', array('show'=>'`show`+1'), $clause, $from, $limit, array('fields'=>'`click`/`show`', 'direction'=>'DESC'));
+
+        $sql = "UPDATE `search_item` SET `show`=`show`+1 ";
+
+        $rows = $this->db->select('search_item', $clause, $from, $limit, array('fields'=>'`click`/`show`', 'direction'=>'DESC'));
+        $ids = array();
+        foreach($rows as $row)
+        {
+            $ids[] = $row['id'];
+        }
+        $sql .= " WHERE `search_item`.`id` IN (". implode(', ', $ids) .")";
+        $this->db->query($sql);
     }
 
 }

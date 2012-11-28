@@ -107,22 +107,7 @@ class PdoEngine
         }
         $sql .= implode(', ', $set);
         
-        if($limit !== FALSE)
-        {
-            $rows = $this->select($table, $where, $from, $limit, $order);
-            $ids = array();
-            foreach($rows as $row)
-            {
-                $ids[] = $row['id'];
-            }
-            $where = "WHERE `{$table}`.`id` IN (". implode(', ', $ids) .")";
-        }
-        else
-        {
-            $where = self::makeClause($where);
-        }
-        
-        $sql .= " ".$where;
+        $sql .= " ". self::makeClause($where);
         return $this->db->query($sql);
     }
 }
