@@ -56,6 +56,7 @@ CREATE TABLE `source_domain` (
 -- Dumping data for table `source_domain`
 --
 INSERT INTO `source_domain` VALUES
+(NULL, 'news.google.com'),
 (NULL, 'en.wikipedia.org'),
 (NULL, 'ru.wikipedia.org'),
 (NULL, 'lurkmore.to');

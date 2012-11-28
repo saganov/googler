@@ -13,19 +13,8 @@ class GooglerModel
         $this->number  = $number;
     }
 
-    protected function search($query, $source)
+    protected function getPage($url)
     {
-        $res = array();
-
-        //$header[] = 'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; ru; rv:1.9.2) Gecko/20100115 Firefox/3.6 sputnik 2.3.0.70';
-        //$header[] = 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8';
-        //$header[] = 'Accept-Language: ru,en-us;q=0.7,en;q=0.3';
-        //$header[] = 'Accept-Encoding: gzip,deflate';
-        //$header[] = 'Accept-Charset: windows-1251,utf-8;q=0.7,*;q=0.7';
-        //$header[] = 'Keep-Alive: 115';
-        //$header[] = 'Connection: keep-alive';
-        $google_search_url = "https://www.google.com/search?q=site:". urlencode($source .' '.$query);
-
         $options = array(
             CURLOPT_RETURNTRANSFER => true,     // return web page
             CURLOPT_HEADER         => false,    // don't return headers
@@ -39,31 +28,34 @@ class GooglerModel
             CURLOPT_COOKIEJAR      => "cookie.txt",
             //CURLOPT_USERAGENT      => "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3",
             CURLOPT_USERAGENT      => "Mozilla/5.0 (X11; Linux i686; rv:16.0) Gecko/20100101 Firefox/16.0",
-
+            
             //CURLOPT_REFERER        => "http://www.google.com/",
-            CURLOPT_REFERER        => $google_search_url,
+            CURLOPT_REFERER        => $url,
                          );
 
-        /** @todo: google search "site:source query" */
+        $resource = curl_init($url);
+        curl_setopt_array($resource, $options);
+        $html = curl_exec($resource);
+        if (200 != $code = curl_getinfo($resource, CURLINFO_HTTP_CODE))
+        {
+            throw new Exception('Google server returned an unsupported HTTP header: '. $code);
+        }
+        curl_close($resource); // close the connection 
+
+        return $html;
+    }
+
+    protected function search($query, $source)
+    {
+        $res = array();
+        $google_search_url = "https://www.google.com/search?q=site:". urlencode($source .' '.$query);
+
         $number = 0;
         $page = 0;
-
         while($page < 4)
         {
-            $resource = curl_init($google_search_url .'&start='. $page++);
-/*
-            curl_setopt($resource, CURLOPT_HTTPHEADER, $header); 
-            curl_setopt($resource, CURLOPT_ENCODING, 'gzip,deflate'); 
-            curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
-*/          
-            curl_setopt_array($resource,$options);
-            $html = curl_exec($resource);
-            if (200 != $code = curl_getinfo($resource, CURLINFO_HTTP_CODE))
-            {
-                throw new Exception('Google server returned an unsupported HTTP header: '. $code);
-            }
-            
-            curl_close($resource); // close the connection 
+            $html = $this->getPage($google_search_url .'&start='. $page);
+            $page += 10;
             phpQuery::newDocument($html);
             // all LIs from last selected DOM
             foreach(pq('div#ires')->find('li.g') as $item)
@@ -97,13 +89,66 @@ class GooglerModel
         return $res;
     }
 
+    protected function news($query)
+    {
+        $res = array();
+        $google_news_url = "https://www.google.com/search?tbm=nws&as_q=". urlencode($query); //Chuck%20Norris&start=";
+
+        $number = 0;
+        $page = 0;
+        while($page < 4)
+        {
+            $html = $this->getPage($google_news_url .'&start='. $page);
+            $page += 10;
+            phpQuery::newDocument($html);
+            // all LIs from last selected DOM
+            foreach(pq('div#ires')->find('li.g') as $item)
+            {
+                $number++;
+                if($number > $this->number)
+                {
+                    break 2;
+                }
+                
+                $pq = pq($item);
+                
+                $title = $pq->find('h3.r > a')->html();
+                $url   = $pq->find('h3.r > a')->attr('href');
+                if (preg_match('/^.*(http:\/\/.*)$/', $url, $matches))
+                {
+                    $url = $matches[1];
+                }
+                $source = $pq->find('div.slp >span.news-source')->html();
+                $date   = $pq->find('div.slp >span.nsa')->html();
+                $desc   = $pq->find('div.st')->html();
+
+
+                $res[] = array(
+                    'query_phrase'  => $query,
+                    'source_domain' => 'news.google.com',
+                    'url'           => $url,
+                    'title'         => $title,
+                    'description'   => $desc,
+                    'date'          => gmdate('Y-m-d'));
+                
+            }
+        }
+        return $res;
+    }
+
     public function get($query)
     {
         $res = array();
         foreach($this->sources as $source)
         {
+            if($source == 'news.google.com')
+            {
+                continue;
+            }
             $res = array_merge($res, $this->search($query, $source['domain']));
         }
+        $res = array_merge($res, $this->news($query));
+
         return $res;
     }
     
