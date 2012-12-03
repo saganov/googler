@@ -70,25 +70,10 @@ class SearchModel
         $this->db->insert('search_item', $data);
     }
 
-    public function updateList($query = NULL, $source = NULL, $from = 0, $limit = FALSE)
+    public function updateList(array $urls)
     {
-        $res = $this->db->query("SELECT `id` FROM `query_phrase` WHERE `text`='$query'");
-        $clause = array('query_phrase'=>$res[0]['id']);
-        if(!empty($source))
-        {
-            $res = $this->db->query("SELECT `id` FROM `source_domain` WHERE `domain`='{$source}'");
-            $clause['source_domain'] = $res[0]['id'];
-        }
-
-        $sql = "UPDATE `search_item` SET `show`=`show`+1 ";
-
-        $rows = $this->db->select('search_item', $clause, $from, $limit, array('fields'=>'`click`/`show`', 'direction'=>'DESC'));
-        $ids = array();
-        foreach($rows as $row)
-        {
-            $ids[] = $row['id'];
-        }
-        $sql .= " WHERE `search_item`.`id` IN (". implode(', ', $ids) .")";
+        $sql = "UPDATE `search_item` SET `show`=`show`+1 "
+             ." WHERE `search_item`.`url` IN ('". implode("', '", $urls) ."')";
         $this->db->query($sql);
     }
 

@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/ActionHelper.php';
+
 class SearchController
 {
     protected $cache;
@@ -26,49 +28,35 @@ class SearchController
         $view->output();
     }
     
-    protected function key($query = NULL, $source = NULL, $page = 0)
+    protected function extract(array $data, $key)
     {
-        return $query.'_'.$source.'_'.$page;
+        $res = array();
+        foreach($data as $item)
+        {
+            if(isset($item[$key]))
+            {
+                $res[] = $item[$key];
+            }
+        }
+        return $res;
     }
 
-    protected function decode(/*string*/$data)
+    protected function update(array &$data, $key, $operation)
     {
-        return json_decode($data, TRUE);
-        //return unserialize($data);
-    }
-
-    protected function encode(array $data)
-    {
-        return json_encode($data);
-        //return serialize($data);
-    }
-
-    protected function isUniqueVisit($query = NULL, $source = NULL, $page = 0)
-    {
-        $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search']) : array());
-        return (!isset($search[$key]));
-    }
-
-    protected function isUniqueClick($url)
-    {
-        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click']) : array());
-        return (!isset($click[$url]));
-    }
-
-    protected function addVisit($query = NULL, $source = NULL, $page = 0)
-    {
-        $key = $this->key($query, $source, $page);
-        $search = (isset($_COOKIE['search']) ? $this->decode($_COOKIE['search']) : array());
-        $search[$key] = time();
-        return $this->encode($search);
-    }
-
-    protected function addClick($url)
-    {
-        $click = (isset($_COOKIE['click']) ? $this->decode($_COOKIE['click']) : array());
-        $click[$url] = time();
-        return $this->encode($click);
+        $res = array();
+        foreach($data as &$item)
+        {
+            if(isset($item[$key]))
+            {
+                switch($operation)
+                {
+                    case '+1':
+                        ++$item[$key];
+                        break;
+                }
+            }
+        }
+        unset($item);
     }
 
     public function listAction($query = NULL, $source = NULL, $page = 0)
@@ -79,22 +67,26 @@ class SearchController
             $count = $this->cache->countList($query, $source);
             if($count < 1)
             {
+                /** @todo: let the cache insert returned the count of the inserted items
+                 *         to avoid redundant database interaction
+                 */
                 $this->cache->insertList($query, $this->googler->get($query));
             }
             $count = $this->cache->countList($query, $source);
             
-            if($this->isUniqueVisit($query, $source, $page))
-            {
-                View::setcookie('search', $this->addVisit($query, $source, $page));
-                $this->cache->updateList($query,
-                                         $source,
-                                         $this->itemsPerPage * $page, // from line
-                                         $this->itemsPerPage);        // limit
-            }
             $result = $this->cache->getList($query,
                                             $source,
                                             $this->itemsPerPage * $page,
                                             $this->itemsPerPage);
+
+            $urls = $this->extract($result, 'url');
+            $unshown = ActionHelper::getUnshown($urls);
+            if(!empty($unshown))
+            {
+                ActionHelper::addShown($unshown);
+                $this->cache->updateList($unshown);
+                $this->update($result, 'show', '+1');
+            }
             
             $content = new View('content.html.php');
             $content->set(array('query'=>$query,
@@ -115,9 +107,9 @@ class SearchController
 
     public function ajaxAction($url)
     {
-        if($this->isUniqueClick($url))
+        if(ActionHelper::isUniqueClick($url))
         {
-            View::setcookie('click', $this->addClick($url));
+            ActionHelper::addClicked($url);
             $this->cache->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
             $rows = $this->cache->select('search_item', array('url'=>$url), 0, 1);
             $ajax = new View('ajax.html.php');

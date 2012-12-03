@@ -13,7 +13,7 @@ else
     /** @todo: think about determine what should to do
      *         based on REQUEST method: GET, POST, etc.
      */
-    $method = isset($_REQUEST['m']) ? $_REQUEST['m'] : 'index'; /** @todo: should be replaced by index */
+    $method = isset($_REQUEST['m']) ? $_REQUEST['m'] : 'index';
     
     require_once (dirname(dirname(__FILE__)) ."/app/App.php");
     require_once (dirname(dirname(__FILE__))."/src/View.php");
