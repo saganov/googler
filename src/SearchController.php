@@ -61,6 +61,7 @@ class SearchController
 
     public function listAction($query = NULL, $source = NULL, $page = 0)
     {
+        $helper = new ActionHelper;
         $view = new View('body.html.php');
         try
         {
@@ -79,11 +80,11 @@ class SearchController
                                             $this->itemsPerPage * $page,
                                             $this->itemsPerPage);
 
-            $urls = $this->extract($result, 'url');
-            $unshown = ActionHelper::getUnshown($urls);
+            $url_ids = $this->extract($result, 'id');
+            $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown))
             {
-                ActionHelper::addShown($unshown);
+                $helper->addShown($unshown);
                 $this->cache->updateList($unshown);
                 $this->update($result, 'show', '+1');
             }
@@ -107,9 +108,10 @@ class SearchController
 
     public function ajaxAction($url)
     {
-        if(ActionHelper::isUniqueClick($url))
+        $helper = new ActionHelper;
+        if($helper->isUniqueClick($url))
         {
-            ActionHelper::addClicked($url);
+            $helper->addClicked($url);
             $this->cache->update('search_item', array('click'=>'`click`+1'), array('url' => $url));
             $rows = $this->cache->select('search_item', array('url'=>$url), 0, 1);
             $ajax = new View('ajax.html.php');

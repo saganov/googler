@@ -2,63 +2,68 @@
 
 class ActionHelper
 {
+    protected $client;
+
+    protected $db;
+
+    public function __construct()
+    {
+        /** @todo: this code shouldn't be there */
+        $this->db = new PdoEngine('googler', 'root', 'root');
+
+        if(isset($_COOKIE['client']))
+        {
+            $this->client = $_COOKIE['client'];
+        }
+        else
+        {
+            $this->client = uniqid();
+            View::setcookie('client', $this->client);
+        }
+    }
     
-    protected static function decode(/*string*/$data)
+    public function getUnshown(array $ids)
     {
-        return json_decode($data, TRUE);
-        //return unserialize($data);
+        $sql  = "SELECT `search_item_id` FROM `statistic` WHERE `client`='{$this->client}'";
+        
+        $shown = $this->db->query($sql);
+        $res = array();
+        foreach($shown as $item)
+        {
+            $res[] = $item['search_item_id'];
+        }
+        
+        return array_diff($ids, $res);
     }
-
-    protected static function encode(array $data)
-    {
-        return json_encode($data);
-        //return serialize($data);
-    }
-
-    public static function getShown()
-    {
-        return (isset($_COOKIE['show']) ? self::decode($_COOKIE['show']) : array());
-    }
-
-    public static function addShown(array $urls)
-    {
-        return self::setShown(array_merge($urls, self::getShown()));
-    }
-
-    public static function setShown(array $urls)
-    {
-        /** @todo: it's not a good solution that Model knows about View */
-        return View::setcookie('show', self::encode($urls));
-    }
-
-    public static function getUnshown(array $urls)
-    {
-        return array_diff($urls, self::getShown());
-    }
-
-    public static function getClicked()
-    {
-        return (isset($_COOKIE['click']) ? self::decode($_COOKIE['click']) : array());
-    }
-
-    public static function isUniqueClick($url)
-    {
-        return (FALSE === array_search($url, self::getClicked()));
-    }
-
-    public static function addClicked($url)
-    {
-        $url = is_array($url) ? $url : array($url);
-        return self::setClicked(array_merge($url, self::getClicked()));
-    }
-
-    public static function setClicked(array $urls)
-    {
-        /** @todo: it's not a good solution that Model knows about View */
-        return View::setcookie('click', self::encode($urls));
-    }
-
     
+    public function addShown($ids)
+    {
+        $ids =(array)$ids;
+
+        foreach($ids as $id)
+        {
+            $this->db->query("INSERT INTO `statistic` SET `client`='{$this->client}', `search_item_id`={$id}");
+        }
+    }
+    
+
+    public function isUniqueClick($url)
+    {
+        $sql = "SELECT COUNT(*) AS `count` FROM `statistic`"
+            ." LEFT JOIN `search_item` ON (`statistic`.`search_item_id`=`search_item`.`id`)"
+            ." WHERE `client`='{$this->client}'"
+            ." AND `url`='{$url}' AND `clicked`<>0";
+        $clicked = $this->db->query($sql);
+        return ($clicked[0]['count'] == 0);
+    }
+
+    public function addClicked($url)
+    {
+        $sql = "UPDATE `statistic` SET `clicked`=now()"
+            ." WHERE `search_item_id`=(SELECT `id` FROM `search_item` WHERE `url`='{$url}') LIMIT 1";
+        $this->db->query($sql);
+    }
+   
     protected static function dump()
     {
         $dump = '';

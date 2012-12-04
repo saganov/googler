@@ -1,4 +1,5 @@
 -- MySQL dump x.xx
+
 --
 -- Host: localhost    Database: googler
 -- -------------------------------------------------------
@@ -60,3 +61,15 @@ INSERT INTO `source_domain` VALUES
 (NULL, 'en.wikipedia.org'),
 (NULL, 'ru.wikipedia.org'),
 (NULL, 'lurkmore.to');
+
+DROP TABLE IF EXISTS `statistic`;
+CREATE TABLE `statistic` (
+  `id` INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `client` VARCHAR(40) NOT NULL,
+  `search_item_id` INTEGER NOT NULL,
+  `shown` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `clicked` TIMESTAMP DEFAULT 0,
+  KEY CLIENT_INDEX (`client`),
+  KEY SEARCH_INDEX (`search_item_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
