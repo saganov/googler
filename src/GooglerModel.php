@@ -141,15 +141,10 @@ class GooglerModel
         $res = array();
         foreach($this->sources as $source)
         {
-            if($source == 'news.google.com')
-            {
-                continue;
-            }
             $res = array_merge($res, $this->search($query, $source['domain']));
         }
-        $res = array_merge($res, $this->news($query));
-
-        return $res;
+        
+        return array('search'=>$res, 'news'=>$this->news($query));
     }
     
 

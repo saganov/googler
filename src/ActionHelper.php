@@ -24,43 +24,61 @@ class ActionHelper
     
     public function getUnshown(array $ids)
     {
-        $sql  = "SELECT `search_item_id` FROM `statistic` WHERE `client`='{$this->client}'";
-        
+        $sql  = "SELECT `item_id` FROM `statistic` WHERE `client`='{$this->client}' AND `table`='search_item'";
         $shown = $this->db->query($sql);
         $res = array();
         foreach($shown as $item)
         {
-            $res[] = $item['search_item_id'];
+            $res[] = $item['item_id'];
         }
         
-        return array_diff($ids, $res);
+        $unshown = array();
+        $unshown['search'] = array_diff($ids['search'], $res);
+
+        $sql  = "SELECT `item_id` FROM `statistic` WHERE `client`='{$this->client}' AND `table`='news_item'";
+        $shown = $this->db->query($sql);
+        $res = array();
+        foreach($shown as $item)
+        {
+            $res[] = $item['item_id'];
+        }
+        
+        $unshown['news'] = array_diff($ids['news'], $res);
+
+        return $unshown;
     }
     
     public function addShown($ids)
     {
         $ids =(array)$ids;
 
-        foreach($ids as $id)
+        foreach($ids['search'] as $id)
         {
-            $this->db->query("INSERT INTO `statistic` SET `client`='{$this->client}', `search_item_id`={$id}");
+            $this->db->query("INSERT INTO `statistic` SET `table`='search_item', `client`='{$this->client}', `item_id`={$id}");
+        }
+        
+        foreach($ids['news'] as $id)
+        {
+            $this->db->query("INSERT INTO `statistic` SET `table`='news_item', `client`='{$this->client}', `item_id`={$id}");
         }
     }
     
 
-    public function isUniqueClick($url)
+    public function isUniqueClick($url, $table)
     {
         $sql = "SELECT COUNT(*) AS `count` FROM `statistic`"
-            ." LEFT JOIN `search_item` ON (`statistic`.`search_item_id`=`search_item`.`id`)"
+            ." LEFT JOIN `{$table}` ON (`statistic`.`item_id`=`{$table}`.`id`)"
             ." WHERE `client`='{$this->client}'"
+            ." AND `table` = '{$table}'"
             ." AND `url`='{$url}' AND `clicked`<>0";
         $clicked = $this->db->query($sql);
         return ($clicked[0]['count'] == 0);
     }
 
-    public function addClicked($url)
+    public function addClicked($url, $table)
     {
         $sql = "UPDATE `statistic` SET `clicked`=now()"
-            ." WHERE `search_item_id`=(SELECT `id` FROM `search_item` WHERE `url`='{$url}') LIMIT 1";
+            ." WHERE `table`='{$table}' AND `item_id`=(SELECT `id` FROM `{$table}` WHERE `url`='{$url}') LIMIT 1";
         $this->db->query($sql);
     }
    

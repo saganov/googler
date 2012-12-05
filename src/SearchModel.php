@@ -19,7 +19,15 @@ class SearchModel
         return $this->db->update($table, $data, $where, $from, $limit);
     }
 
-    public function countList($query, $source = NULL)
+    public function isQueryExists($query)
+    {
+        $sql = "SELECT COUNT(*) AS `count` FROM `query_phrase`";
+        $sql .= PdoEngine::makeClause(array('text'=>$query));
+        $statement = $this->db->query($sql);
+        return ($statement[0]['count'] > 0);
+    }
+
+    public function countListSearch($query, $source = NULL)
     {
         $sql = "SELECT COUNT(*) AS `count` FROM `search_item` "
             ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`search_item`.`query_phrase` "
@@ -32,6 +40,15 @@ class SearchModel
         }
 
         $sql .= PdoEngine::makeClause($where);
+        $statement = $this->db->query($sql);
+        return $statement[0]['count'];
+    }
+
+    public function countListNews($query, $source = NULL)
+    {
+        $sql = "SELECT COUNT(*) AS `count` FROM `news_item` "
+            ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`news_item`.`query_phrase`";
+        $sql .= PdoEngine::makeClause(array('text'=>$query));
         $statement = $this->db->query($sql);
         return $statement[0]['count'];
     }
@@ -51,7 +68,19 @@ class SearchModel
         $sql .= PdoEngine::makeClause($where) ." "
             . PdoEngine::makeOrder(array('fields'=>'`click`/`show`', 'direction'=>'DESC')) ." "
             . PdoEngine::makeLimit($from, $limit);
-        return $this->db->query($sql);
+        $res = array('search' =>  $this->db->query($sql));
+
+
+        $sql = "SELECT `news_item`.*, `query_phrase`.`text` FROM `news_item`"
+            ." LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`news_item`.`query_phrase`";
+
+        $sql .= PdoEngine::makeClause(array('text'=>$query)) ." "
+            . PdoEngine::makeOrder(array('fields'=>'`click`/`show`', 'direction'=>'DESC')) ." "
+            . PdoEngine::makeLimit($from, $limit);
+
+        $res['news'] = $this->db->query($sql);
+        
+        return $res;
     }
     
     public function insertList($query_phrase, array $data)
@@ -60,21 +89,42 @@ class SearchModel
         $res = $this->db->query("SELECT `id` FROM `query_phrase` WHERE `text`='$query_phrase'");
         $query_phrase_id = $res[0]['id'];
         
-        foreach($data as &$row)
+        foreach($data['search'] as &$row)
         {
             $row['query_phrase'] = $query_phrase_id;
             $res = $this->db->query("SELECT `id` FROM `source_domain` WHERE `domain`='{$row['source_domain']}'");
             $row['source_domain'] = $res[0]['id'];
         }
+        unset($row);
         
-        $this->db->insert('search_item', $data);
+        $this->db->insert('search_item', $data['search']);
+
+        foreach($data['news'] as &$row)
+        {
+            $row['query_phrase'] = $query_phrase_id;
+            unset($row['source_domain']);
+        }
+        unset($row);
+
+        $this->db->insert('news_item', $data['news']);
     }
 
     public function updateList(array $url_ids)
     {
-        $sql = "UPDATE `search_item` SET `show`=`show`+1 "
-             ." WHERE `id` IN (". implode(", ", $url_ids) .")";
-        $this->db->query($sql);
+        if(!empty($url_ids['search']))
+        {
+            $sql = "UPDATE `search_item` SET `show`=`show`+1 "
+                ." WHERE `id` IN (". implode(", ", $url_ids['search']) .")";
+            $this->db->query($sql);
+        }
+
+        if(!empty($url_ids['news']))
+        {
+            $sql = "UPDATE `news_item` SET `show`=`show`+1 "
+                ." WHERE `id` IN (". implode(", ", $url_ids['news']) .")";
+            $this->db->query($sql);
+        }
+        
     }
 
 }

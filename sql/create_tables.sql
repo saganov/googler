@@ -18,7 +18,7 @@ CREATE TABLE `search_item` (
   `description` TEXT,
   `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `show` INTEGER DEFAULT 0,
-  click INTEGER DEFAULT 0,
+  `click` INTEGER DEFAULT 0,
   KEY QUERY_INDEX (`query_phrase`),
   KEY DOMAIN_INDEX (`source_domain`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -30,6 +30,24 @@ INSERT INTO `search_item` VALUES
 (NULL,1,1,'http://super.domain.com/test','Test on super.domain.com','Description of the Test on super.domain.com',NULL,1,1),
 (NULL,1,1,'http://super.domain.com/test2','Test Second on super.domain.com','Description of the Test 2 on super.domain.com',NULL,2,1),
 (NULL,1,1,'http://super.domain.com/test3','Test Third on super.domain.com','Description of the Test 3 on super.domain.com',NULL,3,1);
+
+--
+-- Table structure for table `news_item`
+--
+DROP TABLE IF EXISTS `news_item`;
+CREATE TABLE `news_item` (
+  `id` INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `query_phrase` INTEGER NOT NULL DEFAULT 0,
+  `url` VARCHAR(100) NOT NULL DEFAULT '',
+  `title` VARCHAR(100) NOT NULL DEFAULT '',
+  `description` TEXT,
+  `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `show` INTEGER DEFAULT 0,
+  `click` INTEGER DEFAULT 0,
+  KEY QUERY_INDEX (`query_phrase`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 --
 -- Table structure for table `query_phrase`
 --
@@ -57,7 +75,6 @@ CREATE TABLE `source_domain` (
 -- Dumping data for table `source_domain`
 --
 INSERT INTO `source_domain` VALUES
-(NULL, 'news.google.com'),
 (NULL, 'en.wikipedia.org'),
 (NULL, 'ru.wikipedia.org'),
 (NULL, 'lurkmore.to');
@@ -66,10 +83,11 @@ DROP TABLE IF EXISTS `statistic`;
 CREATE TABLE `statistic` (
   `id` INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `client` VARCHAR(40) NOT NULL,
-  `search_item_id` INTEGER NOT NULL,
+  `table` VARCHAR(40) NOT NULL,
+  `item_id` INTEGER NOT NULL,
   `shown` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `clicked` TIMESTAMP DEFAULT 0,
   KEY CLIENT_INDEX (`client`),
-  KEY SEARCH_INDEX (`search_item_id`)
+  KEY SEARCH_INDEX (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

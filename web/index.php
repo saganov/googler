@@ -24,9 +24,13 @@ else
     $app = new App($method);
     if($method == 'ajax')
     {
-        $app->run($_POST['url']);
+        $app->run($_POST['url'], $_POST['table']);
     }
     elseif($method == 'list')
+    {
+        $app->run($query, $source);
+    }
+    elseif(in_array($method, array('listSearch', 'listNews')))
     {
         $app->run($query, $source, $page);
     }
