@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/ActionHelper.php';
+require_once dirname(__FILE__).'/ActionHelper.php';
 
 class SearchController
 {
