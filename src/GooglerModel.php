@@ -89,6 +89,53 @@ class GooglerModel
         return $res;
     }
 
+    protected function youtube($query)
+    {
+        $res = array();
+        $url = "https://www.youtube.com/results?search_query=". urlencode($query);
+
+        $number = 0;
+        $page = 0;
+        while($page < 4)
+        {
+            $html = $this->getPage($url .'&page='. $page);
+            $page += 10;
+            phpQuery::newDocument($html);
+            // all LIs from last selected DOM
+            foreach(pq('#search-results')->find('li.context-data-item') as $item)
+            {
+                $number++;
+                if($number > $this->number)
+                {
+                    break 2;
+                }
+                
+                $pq = pq($item);
+                
+                $title = $pq->find('h3.yt-lockup2-title > a')->html();
+                $url   = $pq->find('h3.yt-lockup2-title > a')->attr('href');
+                if (preg_match('/^.*(http:\/\/.*)$/', $url, $matches))
+                {
+                    $url = $matches[1];
+                }
+                $source = $pq->find('p.yt-lockup2-meta > a')->html();
+                //$date   = $pq->find('div.slp >span.nsa')->html();
+                $desc   = $pq->find('p.yt-lockup2-description')->html();
+
+
+                $res[] = array(
+                    'query_phrase'  => $query,
+                    'source_domain' => $source,
+                    'url'           => $url,
+                    'title'         => $title,
+                    'description'   => $desc,
+                    'date'          => gmdate('Y-m-d'));
+                
+            }
+        }
+        return $res;
+    }
+
     protected function news($query)
     {
         $res = array();
@@ -125,7 +172,7 @@ class GooglerModel
 
                 $res[] = array(
                     'query_phrase'  => $query,
-                    'source_domain' => 'news.google.com',
+                    'source_domain' => $source,
                     'url'           => $url,
                     'title'         => $title,
                     'description'   => $desc,
@@ -144,7 +191,7 @@ class GooglerModel
             $res = array_merge($res, $this->search($query, $source['domain']));
         }
         
-        return array('search'=>$res, 'news'=>$this->news($query));
+        return array('search'=>$res, 'news'=>$this->news($query), 'youtube' => $this->youtube($query));
     }
     
 

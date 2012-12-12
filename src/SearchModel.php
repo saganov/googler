@@ -53,6 +53,15 @@ class SearchModel
         return $statement[0]['count'];
     }
 
+    public function countListYoutube($query, $source = NULL)
+    {
+        $sql = "SELECT COUNT(*) AS `count` FROM `youtube_item` "
+            ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`youtube_item`.`query_phrase`";
+        $sql .= PdoEngine::makeClause(array('text'=>$query));
+        $statement = $this->db->query($sql);
+        return $statement[0]['count'];
+    }
+
     public function getList($query = NULL, $source = NULL, $from = 0, $limit = FALSE)
     {
         $sql = "SELECT `search_item`.*, `query_phrase`.`text`, `source_domain`.`domain`  FROM `search_item` "
@@ -79,6 +88,15 @@ class SearchModel
             . PdoEngine::makeLimit($from, $limit);
 
         $res['news'] = $this->db->query($sql);
+
+        $sql = "SELECT `youtube_item`.*, `query_phrase`.`text` FROM `youtube_item`"
+            ." LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`youtube_item`.`query_phrase`";
+
+        $sql .= PdoEngine::makeClause(array('text'=>$query)) ." "
+            . PdoEngine::makeOrder(array('fields'=>'`click`/`show`', 'direction'=>'DESC')) ." "
+            . PdoEngine::makeLimit($from, $limit);
+
+        $res['youtube'] = $this->db->query($sql);
         
         return $res;
     }
@@ -107,6 +125,15 @@ class SearchModel
         unset($row);
 
         $this->db->insert('news_item', $data['news']);
+
+        foreach($data['youtube'] as &$row)
+        {
+            $row['query_phrase'] = $query_phrase_id;
+            unset($row['source_domain']);
+        }
+        unset($row);
+
+        $this->db->insert('youtube_item', $data['youtube']);
     }
 
     public function updateList(array $url_ids)
@@ -124,7 +151,13 @@ class SearchModel
                 ." WHERE `id` IN (". implode(", ", $url_ids['news']) .")";
             $this->db->query($sql);
         }
-        
+
+        if(!empty($url_ids['youtube']))
+        {
+            $sql = "UPDATE `youtube_item` SET `show`=`show`+1 "
+                ." WHERE `id` IN (". implode(", ", $url_ids['youtube']) .")";
+            $this->db->query($sql);
+        }
     }
 
 }

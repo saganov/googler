@@ -45,13 +45,21 @@ class ActionHelper
         
         $unshown['news'] = array_diff($ids['news'], $res);
 
+        $sql  = "SELECT `item_id` FROM `statistic` WHERE `client`='{$this->client}' AND `table`='youtube_item'";
+        $shown = $this->db->query($sql);
+        $res = array();
+        foreach($shown as $item)
+        {
+            $res[] = $item['item_id'];
+        }
+        
+        $unshown['youtube'] = array_diff($ids['youtube'], $res);
+
         return $unshown;
     }
     
-    public function addShown($ids)
+    public function addShown(array $ids)
     {
-        $ids =(array)$ids;
-
         foreach($ids['search'] as $id)
         {
             $this->db->query("INSERT INTO `statistic` SET `table`='search_item', `client`='{$this->client}', `item_id`={$id}");
@@ -60,6 +68,11 @@ class ActionHelper
         foreach($ids['news'] as $id)
         {
             $this->db->query("INSERT INTO `statistic` SET `table`='news_item', `client`='{$this->client}', `item_id`={$id}");
+        }
+
+        foreach($ids['youtube'] as $id)
+        {
+            $this->db->query("INSERT INTO `statistic` SET `table`='youtube_item', `client`='{$this->client}', `item_id`={$id}");
         }
     }
     

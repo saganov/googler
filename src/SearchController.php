@@ -81,13 +81,15 @@ class SearchController
             $url_ids = array();
             $url_ids['search'] = $this->extract($result['search'], 'id');
             $url_ids['news']   = $this->extract($result['news'],   'id');
+            $url_ids['youtube']= $this->extract($result['youtube'],'id');
             $unshown = $helper->getUnshown($url_ids);
-            if(!empty($unshown['search']) || !empty($unshown['news']))
+            if(!empty($unshown['search']) || !empty($unshown['news']) || !empty($unshown['youtube']))
             {
                 $helper->addShown($unshown);
                 $this->cache->updateList($unshown);
                 $this->update($result['search'], 'show', '+1');
                 $this->update($result['news'],   'show', '+1');
+                $this->update($result['youtube'],'show', '+1');
             }
             
             $content = new View('list.html.php');
@@ -121,6 +123,7 @@ class SearchController
             $url_ids = array();
             $url_ids['search'] = $this->extract($result['search'], 'id');
             $url_ids['news']   = array();
+            $url_ids['youtube']   = array();
             $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown['search']))
             {
@@ -170,6 +173,7 @@ class SearchController
             $url_ids = array();
             $url_ids['search'] = array();
             $url_ids['news']   = $this->extract($result['news'],   'id');
+            $url_ids['youtube'] = array();
             $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown['news']))
             {
@@ -184,6 +188,56 @@ class SearchController
                                 'page'=>$page+1,
                                 'total'=>ceil($count/$this->itemsPerPage),
                                 'items'=>$result['news']));
+        }
+        catch(Exception $e)
+        {
+            $content = new View('error.html.php');
+            $content->set(array('query'=>$query, 'page'=>$page+1, 'message'=>'Error occurs: '.$e->getMessage()));
+        }
+
+        $view->set(array('content'=>$content->parse()));
+        $view->output();
+    }
+
+    public function listYoutubeAction($query = NULL, $source = NULL, $page = 0)
+    {
+        $helper = new ActionHelper;
+        $view = new View('body.html.php');
+        try
+        {
+            $count = $this->cache->countListYoutube($query, $source);
+            if($count < 1)
+            {
+                /** @todo: let the cache insert returned the count of the inserted items
+                 *         to avoid redundant database interaction
+                 */
+                $this->cache->insertList($query, $this->googler->get($query));
+            }
+            $count = $this->cache->countListNews($query, $source);
+            
+            $result = $this->cache->getList($query,
+                                            $source,
+                                            $this->itemsPerPage * $page,
+                                            $this->itemsPerPage);
+
+            $url_ids = array();
+            $url_ids['search']  = array();
+            $url_ids['news']    = array();
+            $url_ids['youtube'] = $this->extract($result['youtube'],   'id');
+            $unshown = $helper->getUnshown($url_ids);
+            if(!empty($unshown['youtube']))
+            {
+                $helper->addShown($unshown);
+                $this->cache->updateList($unshown);
+                $this->update($result['youtube'],   'show', '+1');
+            }
+            
+            $content = new View('list_youtube.html.php');
+            $content->set(array('query'=>$query,
+                                'source'=>$source,
+                                'page'=>$page+1,
+                                'total'=>ceil($count/$this->itemsPerPage),
+                                'items'=>$result['youtube']));
         }
         catch(Exception $e)
         {
