@@ -126,7 +126,7 @@ class GooglerModel
                 $res[] = array(
                     'query_phrase'  => $query,
                     'source_domain' => $source,
-                    'url'           => $url,
+                    'url'           => 'https://www.youtube.com'.$url,
                     'title'         => $title,
                     'description'   => $desc,
                     'date'          => gmdate('Y-m-d'));

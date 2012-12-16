@@ -156,14 +156,6 @@ class SearchController
         try
         {
             $count = $this->cache->countListNews($query, $source);
-            if($count < 1)
-            {
-                /** @todo: let the cache insert returned the count of the inserted items
-                 *         to avoid redundant database interaction
-                 */
-                $this->cache->insertList($query, $this->googler->get($query));
-            }
-            $count = $this->cache->countListNews($query, $source);
             
             $result = $this->cache->getList($query,
                                             $source,
@@ -206,14 +198,6 @@ class SearchController
         try
         {
             $count = $this->cache->countListYoutube($query, $source);
-            if($count < 1)
-            {
-                /** @todo: let the cache insert returned the count of the inserted items
-                 *         to avoid redundant database interaction
-                 */
-                $this->cache->insertList($query, $this->googler->get($query));
-            }
-            $count = $this->cache->countListNews($query, $source);
             
             $result = $this->cache->getList($query,
                                             $source,

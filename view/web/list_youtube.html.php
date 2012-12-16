@@ -4,7 +4,7 @@
 
 <h3>Youtube Result</h3>
 <?php foreach($items as $item): ?>
-<div class="youtube_result" style="width:10%;float:left">
+<div class="youtube_result" style="width:50%;">
   <h4><?= $item['title'] ?> [<span class="show"><?= (int)$item['show']
   ?> </span> : <span class="click"><?= (int)$item['click'] ?></span>
   => <span class="ctr"><?= ViewHelper::ctr($item['click'], $item['show']) ?></span>%]</h4>

@@ -40,8 +40,10 @@
 
 <div style="clear:left; width:100%">
   <h3>Youtube Result</h3>
+  <?php $count=0 ?>
   <?php foreach($items['youtube'] as $item): ?>
-  <div class="youtube_result" style="float:left; width:10%">
+  <?php $count++; if ($count>5) break; ?>
+  <div class="youtube_result" style="float:left; width:18%">
     <h4><?= $item['title'] ?> <br/>[<span class="show"><?= (int)$item['show']
     ?> </span> : <span class="click"><?= (int)$item['click'] ?></span>
     => <span class="ctr"><?= ViewHelper::ctr($item['click'], $item['show']) ?></span>%]</h4>
@@ -50,6 +52,6 @@
   </div>
   <?php endforeach; ?>
   <br/ >
-  <div style="margin-bottom: 30px;"><a href="<?= "index.php?m=lisYoutube&q=$query&s=" ?>">Show
+  <div style="clear:left;margin-bottom: 30px;"><a href="<?= "index.php?m=listYoutube&q=$query&s=" ?>">Show
   all results</a></div>
 </div>

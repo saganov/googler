@@ -30,7 +30,7 @@ else
     {
         $app->run($query, $source);
     }
-    elseif(in_array($method, array('listSearch', 'listNews')))
+    elseif(in_array($method, array('listSearch', 'listNews', 'listYoutube')))
     {
         $app->run($query, $source, $page);
     }
