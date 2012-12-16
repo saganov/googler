@@ -8,7 +8,7 @@
   <h4><?= $item['title'] ?> [<span class="show"><?= (int)$item['show']
   ?> </span> : <span class="click"><?= (int)$item['click'] ?></span>
   => <span class="ctr"><?= ViewHelper::ctr($item['click'], $item['show']) ?></span>%]</h4>
-     <div><a href="<?= $item['url'] ?>"><?= ViewHelper::crop($item['url'], 40) ?></a></div>
+     <div><a href="<?= 'index.php?m=embedYoutube&url='.$item['url'] ?>"><?= ViewHelper::crop($item['url'], 40) ?></a></div>
   <div><?= $item['description'] ?></div>
 </div>
 <?php endforeach; ?>

@@ -9,6 +9,7 @@ else
     $query  = isset($_REQUEST['q']) ? $_REQUEST['q'] : NULL;
     $source = isset($_REQUEST['s']) ? $_REQUEST['s'] : NULL;
     $page   = isset($_REQUEST['p']) ? $_REQUEST['p'] : 0;
+    $url    = isset($_REQUEST['url']) ? $_REQUEST['url'] : NULL;
 
     /** @todo: think about determine what should to do
      *         based on REQUEST method: GET, POST, etc.
@@ -20,7 +21,13 @@ else
     
     View::setTemplateDir(dirname(dirname(__FILE__)) ."/view/web");
     
-    /** @todo: Replace this code into APP */
+    /** @todo: Replace this code into APP
+        @todo: Create the base controller class 
+               and store request there 
+               and make the method to retrieve any
+               request option. This avoid different 
+               controller action signatures
+     */
     $app = new App($method);
     if($method == 'ajax')
     {
@@ -33,6 +40,10 @@ else
     elseif(in_array($method, array('listSearch', 'listNews', 'listYoutube')))
     {
         $app->run($query, $source, $page);
+    }
+    elseif($method == 'embedYoutube')
+    {
+        $app->run($url);
     }
     else
     {

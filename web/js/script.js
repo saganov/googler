@@ -36,7 +36,7 @@ $(document).ready(function(){
             return true;
         });   
 
-    $('.youtube_result a').attr('target', '_blank');
+    //$('.youtube_result a').attr('target', '_blank');
     $('.youtube_result a').click(function(){
             var $this = $(this);
             $.ajax({

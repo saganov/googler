@@ -118,6 +118,13 @@ class GooglerModel
                 {
                     $url = $matches[1];
                 }
+                
+                // 
+                if (preg_match('/^\/watch\?v=(.*)$/', $url, $matches))
+                {
+                    $url = $matches[1];
+                }
+
                 $source = $pq->find('p.yt-lockup2-meta > a')->html();
                 //$date   = $pq->find('div.slp >span.nsa')->html();
                 $desc   = $pq->find('p.yt-lockup2-description')->html();
@@ -126,7 +133,7 @@ class GooglerModel
                 $res[] = array(
                     'query_phrase'  => $query,
                     'source_domain' => $source,
-                    'url'           => 'https://www.youtube.com'.$url,
+                    'url'           => $url,
                     'title'         => $title,
                     'description'   => $desc,
                     'date'          => gmdate('Y-m-d'));

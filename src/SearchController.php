@@ -233,6 +233,17 @@ class SearchController
         $view->output();
     }
 
+    public function embedYoutubeAction($url)
+    {
+        $view = new View('body.html.php');
+        $content = new View('embed_youtube.html.php');
+        /** @todo select youtube_item where url=$url */
+        $item = array('url'=>$url, 'title'=>'Video Title');
+        $content->set(array('item'=>$item));
+        $view->set(array('content'=>$content->parse()));
+        $view->output();
+    }
+
     public function ajaxAction($url, $table)
     {
         $helper = new ActionHelper;
