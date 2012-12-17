@@ -1,5 +1,12 @@
-<a href="<?= "index.php" ?>">Back</a>
+<a href="index.php">Back</a>
 <br/>
 <h3><?= $item['title'] ?></h3>
 <iframe width="420" height="315" src="http://www.youtube.com/embed/<?= $item['url'] ?>" frameborder="0" allowfullscreen></iframe>
-<div style="border:1px solid black;height: 200px;">Related Video Loading...</div>
+<div>
+<?php foreach($related as $video): ?>
+<div style="margin:5px;float:left">
+  <a href="<?= 'index.php?m=embedYoutube&url='.$video['url'] ?>"><img
+  alt="<?= $video['title'] ?>" title="<?= $video['title'] ?>" src="<?= $video['thumb'] ?>"/></a>
+</div>
+<?php endforeach; ?>
+</div>

@@ -236,10 +236,12 @@ class SearchController
     public function embedYoutubeAction($url)
     {
         $view = new View('body.html.php');
+
+        $related = $this->googler->getRelated($url);
         $content = new View('embed_youtube.html.php');
         /** @todo select youtube_item where url=$url */
         $item = array('url'=>$url, 'title'=>'Video Title');
-        $content->set(array('item'=>$item));
+        $content->set(array('item'=>$item, 'related'=>$related));
         $view->set(array('content'=>$content->parse()));
         $view->output();
     }

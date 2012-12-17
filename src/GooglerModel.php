@@ -190,6 +190,45 @@ class GooglerModel
         return $res;
     }
 
+    public function getRelated($url)
+    {
+        $res = array();
+        $url = "https://www.youtube.com/watch?v=". urlencode($url);
+        $html = $this->getPage($url);
+        phpQuery::newDocument($html);
+        // all LIs from last selected DOM
+        foreach(pq('#watch-related')->find('li.video-list-item > a.related-video') as $item)
+        {
+            $pq = pq($item);
+            
+            $title = $pq->find('span.title')->text();
+            $url   = $pq->attr('href');
+            if (preg_match('/^.*(http:\/\/.*)$/', $url, $matches))
+            {
+                $url = $matches[1];
+            }
+            
+            // 
+            if (preg_match('/^\/watch\?v=(.*)$/', $url, $matches))
+            {
+                $url = $matches[1];
+            }
+            
+            //$source = $pq->find('p.yt-lockup2-meta > a')->html();
+            //$date   = $pq->find('div.slp >span.nsa')->html();
+            //$desc   = $pq->find('p.yt-lockup2-description')->html();
+            $thumb    = $pq->find('img[data-thumb]')->attr('data-thumb');
+            
+            
+            $res[] = array(
+                'url'           => $url,
+                'title'         => $title,
+                'thumb'         => $thumb);
+            
+        }
+        return $res;        
+    }
+
     public function get($query)
     {
         $res = array();
