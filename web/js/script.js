@@ -42,7 +42,7 @@ $(document).ready(function(){
             $.ajax({
                 url: "index.php?m=ajax",
                 type: "POST",
-                data: {url: $this.attr('href'), table: 'youtube_item'}
+                data: {url: $this.attr('data-url'), table: 'youtube_item'}
             }).done(function(data) {
                 if(data.click!=false)
                 {
