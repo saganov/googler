@@ -83,7 +83,7 @@ class ActionHelper
             ." LEFT JOIN `{$table}` ON (`statistic`.`item_id`=`{$table}`.`id`)"
             ." WHERE `client`='{$this->client}'"
             ." AND `table` = '{$table}'"
-            ." AND `url`='{$url}' AND `clicked`<>0";
+            ." AND `url`='{$url}' AND `click`<>0";
         $clicked = $this->db->query($sql);
         return ($clicked[0]['count'] == 0);
     }
