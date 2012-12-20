@@ -58,6 +58,7 @@ CREATE TABLE `youtube_item` (
   `url` VARCHAR(100) NOT NULL DEFAULT '',
   `title` VARCHAR(100) NOT NULL DEFAULT '',
   `description` TEXT,
+  `thumb` VARCHAR(100) NOT NULL DEFAULT '',
   `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `show` INTEGER DEFAULT 0,
   `click` INTEGER DEFAULT 0,
