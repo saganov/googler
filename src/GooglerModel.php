@@ -128,8 +128,11 @@ class GooglerModel
                 $source = $pq->find('p.yt-lockup2-meta > a')->html();
                 //$date   = $pq->find('div.slp >span.nsa')->html();
                 $desc   = $pq->find('p.yt-lockup2-description')->html();
-                $thumb  = $pq->find('.video-thumb img')->attr('src');
-
+                $thumb  = $pq->find('.video-thumb img')->attr('data-thumb');
+                if(empty($thumb))
+                {
+                    $thumb  = $pq->find('.video-thumb img')->attr('src');
+                }       
 
                 $res[] = array(
                     'query_phrase'  => $query,
