@@ -1,7 +1,7 @@
 <a href="index.php">Back</a>
 <br/>
 <h3><?= $item['title'] ?></h3>
-<iframe width="420" height="315" src="http://www.youtube.com/embed/<?= $item['url'] style="float:left" ?>" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/<?= $item['url'] ?>" frameborder="0" allowfullscreen style="float:left"></iframe>
 <div style="float:left;margin:2em"><?= $item['description'] ?></div>
 <div style="clear:left">
 <?php foreach($related as $video): ?>
