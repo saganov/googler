@@ -9,7 +9,8 @@ class ActionHelper
     public function __construct()
     {
         /** @todo: this code shouldn't be there */
-        $this->db = new PdoEngine('googler', 'root', 'root');
+        //$this->db = new PdoEngine('googler', 'root', 'root');
+        $this->db =  PdoEngine::getInstance();
 
         if(isset($_COOKIE['client']))
         {

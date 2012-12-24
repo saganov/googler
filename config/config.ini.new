@@ -1,0 +1,6 @@
+
+[DB]
+host=localhost
+name=googler
+user=root
+password=root

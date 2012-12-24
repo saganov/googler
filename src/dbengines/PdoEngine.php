@@ -9,6 +9,8 @@ class PdoEngine
     
     protected $db;
 
+    protected static $instance;
+
     public function __construct($database, $user='root', $password='root', $host='localhost')
     {
         $this->host = $host;
@@ -18,11 +20,26 @@ class PdoEngine
 
         /** @todo: it shoudn't be there */
         $this->connect();
+        
+        self::$instance = $this;
     }
+
 
     public function connect()
     {
         $this->db = new PDO("mysql:host={$this->host};dbname={$this->database}", $this->user, $this->password);
+    }
+
+    public static function getInstance()
+    {
+        if(!isset(self::$instance))
+        {
+            throw new Exception('Database not instantiated yet');
+        }
+        else
+        {
+            return self::$instance;
+        }
     }
 
     public static function makeClause(array $clause)

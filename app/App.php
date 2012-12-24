@@ -13,7 +13,10 @@ class App
     
     public function __construct($method)
     {
-        $db = new PdoEngine('googler', 'root', 'root');
+
+        $config = parse_ini_file(dirname(dirname(__FILE__))."/config/config.ini", true);
+
+        $db = new PdoEngine($config['DB']['name'], $config['DB']['user'], $config['DB']['password']);
         $this->controller = new SearchController(
             new SearchModel($db), //new DatabaseModel(dirname(dirname(__FILE__)).'/data/DB.csv'),
                       // number of the google search result to parse
