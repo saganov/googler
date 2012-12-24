@@ -241,6 +241,7 @@ class SearchController
         $content = new View('embed_youtube.html.php');
         /** @todo select youtube_item where url=$url */
         $item = $this->cache->select('youtube_item', array('url'=>$url));
+        $item = $item[0];
         //$item = array('url'=>$url, 'title'=>'Video Title');
         $content->set(array('item'=>$item, 'related'=>$related));
         $view->set(array('content'=>$content->parse()));
