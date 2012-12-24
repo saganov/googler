@@ -2,7 +2,7 @@
 <br/>
 <h3><?= $item['title'] ?></h3>
 <iframe width="420" height="315" src="http://www.youtube.com/embed/<?= $item['url'] ?>" frameborder="0" allowfullscreen style="float:left"></iframe>
-<div style="float:left;margin:2em"><?= $item['description'] ?></div>
+<div style="float:left;width:50%;margin:0 2em"><?= $item['description'] ?></div>
 <div style="clear:left">
 <?php foreach($related as $video): ?>
 <div style="margin:5px;float:left">
