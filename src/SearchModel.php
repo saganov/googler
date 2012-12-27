@@ -62,11 +62,20 @@ class SearchModel
         return $statement[0]['count'];
     }
 
+    public function countListImage($query, $source = NULL)
+    {
+        $sql = "SELECT COUNT(*) AS `count` FROM `image_item` "
+            ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`image_item`.`query_phrase`";
+        $sql .= PdoEngine::makeClause(array('text'=>$query));
+        $statement = $this->db->query($sql);
+        return $statement[0]['count'];
+    }
+
     public function getList($query = NULL, $source = NULL, $from = 0, $limit = FALSE)
     {
         $sql = "SELECT `search_item`.*, `query_phrase`.`text`, `source_domain`.`domain`  FROM `search_item` "
             ."LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`search_item`.`query_phrase` "
-            ."LEFT JOIN `source_domain` ON `source_domain`.`id`=`search_item`.`source_domain`";
+            ."LEFT JOIN `source_domain` ON `source_domain`.`id`=`search_item`.`source_domain` ";
 
         $where = array('text'=>$query);
         if(!empty($source))
@@ -97,6 +106,15 @@ class SearchModel
             . PdoEngine::makeLimit($from, $limit);
 
         $res['youtube'] = $this->db->query($sql);
+
+        $sql = "SELECT `image_item`.*, `query_phrase`.`text` FROM `image_item`"
+            ." LEFT JOIN `query_phrase` ON `query_phrase`.`id`=`image_item`.`query_phrase`";
+
+        $sql .= PdoEngine::makeClause(array('text'=>$query)) ." "
+            . PdoEngine::makeOrder(array('fields'=>'`click`/`show`', 'direction'=>'DESC')) ." "
+            . PdoEngine::makeLimit($from, $limit);
+
+        $res['image'] = $this->db->query($sql);
         
         return $res;
     }
@@ -134,6 +152,14 @@ class SearchModel
         unset($row);
 
         $this->db->insert('youtube_item', $data['youtube']);
+
+        foreach($data['image'] as &$row)
+        {
+            $row['query_phrase'] = $query_phrase_id;
+        }
+        unset($row);
+
+        $this->db->insert('image_item', $data['image']);
     }
 
     public function updateList(array $url_ids)
@@ -156,6 +182,13 @@ class SearchModel
         {
             $sql = "UPDATE `youtube_item` SET `show`=`show`+1 "
                 ." WHERE `id` IN (". implode(", ", $url_ids['youtube']) .")";
+            $this->db->query($sql);
+        }
+
+        if(!empty($url_ids['image']))
+        {
+            $sql = "UPDATE `image_item` SET `show`=`show`+1 "
+                ." WHERE `id` IN (". implode(", ", $url_ids['image']) .")";
             $this->db->query($sql);
         }
     }

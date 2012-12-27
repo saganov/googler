@@ -56,6 +56,16 @@ class ActionHelper
         
         $unshown['youtube'] = array_diff($ids['youtube'], $res);
 
+        $sql  = "SELECT `item_id` FROM `statistic` WHERE `client`='{$this->client}' AND `table`='image_item'";
+        $shown = $this->db->query($sql);
+        $res = array();
+        foreach($shown as $item)
+        {
+            $res[] = $item['item_id'];
+        }
+        
+        $unshown['image'] = array_diff($ids['image'], $res);
+
         return $unshown;
     }
     
@@ -74,6 +84,11 @@ class ActionHelper
         foreach($ids['youtube'] as $id)
         {
             $this->db->query("INSERT INTO `statistic` SET `table`='youtube_item', `client`='{$this->client}', `item_id`={$id}");
+        }
+
+        foreach($ids['image'] as $id)
+        {
+            $this->db->query("INSERT INTO `statistic` SET `table`='image_item', `client`='{$this->client}', `item_id`={$id}");
         }
     }
     

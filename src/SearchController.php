@@ -82,14 +82,16 @@ class SearchController
             $url_ids['search'] = $this->extract($result['search'], 'id');
             $url_ids['news']   = $this->extract($result['news'],   'id');
             $url_ids['youtube']= $this->extract($result['youtube'],'id');
+            $url_ids['image']  = $this->extract($result['image'],'id');
             $unshown = $helper->getUnshown($url_ids);
-            if(!empty($unshown['search']) || !empty($unshown['news']) || !empty($unshown['youtube']))
+            if(!empty($unshown['search']) || !empty($unshown['news']) || !empty($unshown['youtube']) || !empty($unshown['image']))
             {
                 $helper->addShown($unshown);
                 $this->cache->updateList($unshown);
                 $this->update($result['search'], 'show', '+1');
                 $this->update($result['news'],   'show', '+1');
                 $this->update($result['youtube'],'show', '+1');
+                $this->update($result['image'],  'show', '+1');
             }
             
             $content = new View('list.html.php');
@@ -124,6 +126,7 @@ class SearchController
             $url_ids['search'] = $this->extract($result['search'], 'id');
             $url_ids['news']   = array();
             $url_ids['youtube']   = array();
+            $url_ids['image']     = array();
             $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown['search']))
             {
@@ -166,6 +169,7 @@ class SearchController
             $url_ids['search'] = array();
             $url_ids['news']   = $this->extract($result['news'],   'id');
             $url_ids['youtube'] = array();
+            $url_ids['image']   = array();
             $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown['news']))
             {
@@ -208,6 +212,7 @@ class SearchController
             $url_ids['search']  = array();
             $url_ids['news']    = array();
             $url_ids['youtube'] = $this->extract($result['youtube'],   'id');
+            $url_ids['image']   = array();
             $unshown = $helper->getUnshown($url_ids);
             if(!empty($unshown['youtube']))
             {
@@ -232,6 +237,50 @@ class SearchController
         $view->set(array('content'=>$content->parse()));
         $view->output();
     }
+
+    public function listImageAction($query = NULL, $source = NULL, $page = 0)
+    {
+        $helper = new ActionHelper;
+        $view = new View('body.html.php');
+        try
+        {
+            $count = $this->cache->countListYoutube($query, $source);
+            
+            $result = $this->cache->getList($query,
+                                            $source,
+                                            $this->itemsPerPage * $page,
+                                            $this->itemsPerPage);
+
+            $url_ids = array();
+            $url_ids['search']  = array();
+            $url_ids['news']    = array();
+            $url_ids['youtube'] = array();
+            $url_ids['image']   = $this->extract($result['image'],   'id');
+            $unshown = $helper->getUnshown($url_ids);
+            if(!empty($unshown['image']))
+            {
+                $helper->addShown($unshown);
+                $this->cache->updateList($unshown);
+                $this->update($result['image'],   'show', '+1');
+            }
+            
+            $content = new View('list_image.html.php');
+            $content->set(array('query'=>$query,
+                                'source'=>$source,
+                                'page'=>$page+1,
+                                'total'=>ceil($count/$this->itemsPerPage),
+                                'items'=>$result['image']));
+        }
+        catch(Exception $e)
+        {
+            $content = new View('error.html.php');
+            $content->set(array('query'=>$query, 'page'=>$page+1, 'message'=>'Error occurs: '.$e->getMessage()));
+        }
+
+        $view->set(array('content'=>$content->parse()));
+        $view->output();
+    }
+
 
     public function embedYoutubeAction($url)
     {

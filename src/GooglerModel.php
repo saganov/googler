@@ -234,6 +234,52 @@ class GooglerModel
         return $res;        
     }
 
+    public function image()
+    {
+        $res = array();
+        $url = "https://www.google.com/search?tbm=isch&biw=1278&bih=900&q=". urlencode($query); //Chuck%20Norris&start=";
+
+        $number = 0;
+        $page = 0;
+        while($page < 1)/** @todo there are not pages in images search on google */
+        {
+            $html = $this->getPage($url);
+            $page += 10;
+            phpQuery::newDocument($html);
+            // all LIs from last selected DOM
+            foreach(pq('div#rg_s')->find('div.rg_di') as $item)
+            {
+                $number++;
+                if($number > $this->number)
+                {
+                    break 2;
+                }
+                
+                $pq = pq($item);
+                
+                //$title = $pq->find('h3.r > a')->html();
+                $url   = $pq->find('a.rg_l')->attr('href');
+                if (preg_match('/^.*(http:\/\/.*)$/', $url, $matches))
+                {
+                    $url = $matches[1];
+                }
+                //$source = $pq->find('div.slp >span.news-source')->html();
+                //$date   = $pq->find('div.slp >span.nsa')->html();
+                //$desc   = $pq->find('div.st')->html();
+                $img      = $pq->find('img.rg_i')->attr('src');
+
+
+                $res[] = array(
+                    'query_phrase'  => $query,
+                    'url'           => $url,
+                    'img'           => $img,
+                    'date'          => gmdate('Y-m-d'));
+                
+            }
+        }
+        return $res;
+    }
+
     public function get($query)
     {
         $res = array();
@@ -242,7 +288,10 @@ class GooglerModel
             $res = array_merge($res, $this->search($query, $source['domain']));
         }
         
-        return array('search'=>$res, 'news'=>$this->news($query), 'youtube' => $this->youtube($query));
+        return array('search'  => $res,
+                     'news'    => $this->news($query),
+                     'youtube' => $this->youtube($query),
+                     'image'   => $this->image($query));
     }
     
 

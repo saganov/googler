@@ -67,6 +67,22 @@ CREATE TABLE `youtube_item` (
 
 
 --
+-- Table structure for table `image_item`
+--
+DROP TABLE IF EXISTS `image_item`;
+CREATE TABLE `image_item` (
+  `id` INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `query_phrase` INTEGER NOT NULL DEFAULT 0,
+  `url` VARCHAR(100) NOT NULL DEFAULT '',
+  `img` TEXT NOT NULL DEFAULT '',
+  `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `show` INTEGER DEFAULT 0,
+  `click` INTEGER DEFAULT 0,
+  KEY QUERY_INDEX (`query_phrase`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+--
 -- Table structure for table `query_phrase`
 --
 DROP TABLE IF EXISTS `query_phrase`;
