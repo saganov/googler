@@ -38,6 +38,7 @@ class GooglerModel
         $html = curl_exec($resource);
         if (200 != $code = curl_getinfo($resource, CURLINFO_HTTP_CODE))
         {
+            //file_put_contents('google.responce', var_export(curl_getinfo($resource), true));
             throw new Exception('Google server returned an unsupported HTTP header: '. $code);
         }
         curl_close($resource); // close the connection 
@@ -234,10 +235,10 @@ class GooglerModel
         return $res;        
     }
 
-    public function image()
+    public function image($query)
     {
         $res = array();
-        $url = "https://www.google.com/search?tbm=isch&biw=1278&bih=900&q=". urlencode($query); //Chuck%20Norris&start=";
+        $url = "https://www.google.com/search?num=10&biw=1278&bih=900&site=imghp&tbm=isch&source=hp&biw=1278&bih=900&q=". urlencode($query);
 
         $number = 0;
         $page = 0;
@@ -266,13 +267,12 @@ class GooglerModel
                 //$source = $pq->find('div.slp >span.news-source')->html();
                 //$date   = $pq->find('div.slp >span.nsa')->html();
                 //$desc   = $pq->find('div.st')->html();
-                $img      = $pq->find('img.rg_i')->attr('src');
 
 
                 $res[] = array(
                     'query_phrase'  => $query,
                     'url'           => $url,
-                    'img'           => $img,
+                    'img'           => substr($url, 0, strpos($url, '&')),
                     'date'          => gmdate('Y-m-d'));
                 
             }

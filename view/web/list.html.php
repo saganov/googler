@@ -65,7 +65,7 @@
     <h4>[<span class="show"><?= (int)$item['show'] ?>
     </span> : <span class="click"><?= (int)$item['click'] ?></span>
     => <span class="ctr"><?= ViewHelper::ctr($item['click'], $item['show']) ?></span>%]</h4>
-    <div><a href="<?= $item['url'] ?>" data-url="<?= $item['url'] ?>"><img src="<?= $item['img'] ?>" style="width:90%" /></a></div>
+    <div><a href="<?= $item['url'] ?>" data-url="<?= $item['url'] ?>"><img src="<?= $item['img'] ?>" style="width:80%" /></a></div>
   </div>
   <?php endforeach; ?>
   <br/ >

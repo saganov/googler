@@ -101,6 +101,7 @@ class PdoEngine
 
     public function insert($table, array $data)
     {
+        if(empty($data)) return;
         $sql ="INSERT INTO `{$table}` (`". implode('` , `', array_keys($data[0])) ."`) VALUES ";
         $values = array();
         foreach($data as $row)
